@@ -234,8 +234,8 @@ namespace Gaming_Forum
 
         private void button11_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text = "123123@gmail.com";
-            this.textBox2.Text = "asas12345678";
+            this.textBox1.Text = "ben@gmail.com";
+            this.textBox2.Text = "as123456";
         }
 
         private void button12_Click(object sender, EventArgs e)

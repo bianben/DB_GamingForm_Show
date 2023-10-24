@@ -303,11 +303,22 @@ namespace Groot
             this.button17.Enabled = false;
         }
 
-
+        //紀錄richtextbox1的內容，勾選文章時使用
+        string remembertext;
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex += 1;
+
+            //====================================
+            //將所選技能帶入自我介紹
+            this.richTextBox1.Clear();
+            this.richTextBox1.Text = "我的技能：\r";
+            for (int i = 0; i < this.listBox3.Items.Count; i++)
+            {
+                this.richTextBox1.Text += $"{i + 1}.{this.listBox3.Items[i]}\r";
+            }
+            remembertext = this.richTextBox1.Text;
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -414,10 +425,9 @@ namespace Groot
                 }
                 this.db.SaveChanges();
                 //=========================
-                //自傳附件
-                //=========================
                 MessageBox.Show("新增成功");
                 this.tabControl2.SelectedIndex = 0;
+                //=========================
                 LoadMyResume();
                 LoadCreatePage();
 
@@ -434,7 +444,7 @@ namespace Groot
         {
             //===============================
             //listbox
-            this.listBox3.Items.Clear();
+            //this.listBox3.Items.Clear();
 
             var x = from p in this.db.Skills
                     where p.Name == this.listBox2.Text
@@ -442,14 +452,14 @@ namespace Groot
 
             foreach (var g in x)
             {
-                this.lb.Items.Add($"{g.SkillClass.Name}-{g.Name}");
-
+                this.listBox3.Items.Add($"{g.SkillClass.Name}-{g.Name}");
             }
+            //foreach (var j in lb.Items)
+            //{
+            //    this.listBox3.Items.Add(j);
+            //}
 
-            foreach (var j in lb.Items)
-            {
-                this.listBox3.Items.Add(j);
-            }
+
 
             this.listBox2.Items.Remove(this.listBox2.SelectedItem);
 
@@ -469,21 +479,12 @@ namespace Groot
             }
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button10_Click(object sender, EventArgs e)
         {
             DialogResult result= MessageBox.Show("確定要刪除嗎?","刪除履歷",MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
+                //==============================================
                 //JobResumes
                 var jr = from p in this.db.JobResumes.AsEnumerable()
                          where p.ResumeID == int.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString())
@@ -494,6 +495,7 @@ namespace Groot
                     this.db.JobResumes.Remove(g);
                 }
 
+                //==============================================
                 //ResumeCertificates
                 var rc = from p in this.db.ResumeCertificates.AsEnumerable()
                          where p.ResumeID == int.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString())
@@ -504,6 +506,7 @@ namespace Groot
                     this.db.ResumeCertificates.Remove(c);
                 }
 
+                //==============================================
                 //ResumeSkills
                 var s = from p in this.db.ResumeSkills.AsEnumerable()
                         where p.ResumeID == int.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString())
@@ -515,8 +518,10 @@ namespace Groot
                     this.db.ResumeSkills.Remove(x);
                 }
 
+                //==============================================
                 this.db.SaveChanges();
 
+                //==============================================
                 //resumes
                 var q = (from p in this.db.Resumes.AsEnumerable()
                          where p.ResumeID == int.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString())
@@ -524,7 +529,11 @@ namespace Groot
 
                 if (q == null) { return; }
                 this.db.Resumes.Remove(q);
+
+                //==============================================
                 this.db.SaveChanges();
+
+                //==============================================
 
                 LoadMyResume();
                 LoadMySendResumes();
@@ -538,6 +547,7 @@ namespace Groot
             DialogResult result = MessageBox.Show("此操作會同時將所有已投遞履歷撤回\r要繼續請按確定嗎?", "刪除履歷", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
+                //==============================================
                 //從所有公司接收的所有履歷中找出符合所選項目的履歷ID
                 var q = from p in this.db.JobResumes.AsEnumerable()
                         where p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
@@ -548,6 +558,7 @@ namespace Groot
                     this.db.JobResumes.Remove(x);
                 }
 
+                //==============================================
                 //從證照中找出符合所選項目的履歷ID
                 var qq = from p in this.db.ResumeCertificates.AsEnumerable()
                          where p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
@@ -557,6 +568,7 @@ namespace Groot
                     this.db.ResumeCertificates.Remove(x);
                 }
 
+                //==============================================
                 //從技能中找出符合所選項目的履歷ID
                 var qqq = from p in this.db.ResumeSkills.AsEnumerable()
                           where p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
@@ -566,9 +578,11 @@ namespace Groot
                     this.db.ResumeSkills.Remove(x);
                 }
 
+                //==============================================
                 //儲存
                 this.db.SaveChanges();
 
+                //==============================================
                 //從我的履歷中刪除所選項目的履歷ID
                 var r = (from p in this.db.Resumes.AsEnumerable()
                          where p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
@@ -579,7 +593,7 @@ namespace Groot
                 this.db.Resumes.Remove(r);
                 this.db.SaveChanges();
 
-
+                //==============================================
                 LoadMySendResumes();
             }
             
@@ -596,11 +610,6 @@ namespace Groot
             this.db.JobResumes.Remove(q);
             this.db.SaveChanges();
             LoadMySendResumes();
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
 
         }
 
@@ -628,25 +637,25 @@ namespace Groot
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var q = (from p in this.db.JobResumes.AsEnumerable()
-                    where p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString()) && p.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[2].Value.ToString())
-                    select new
-                    {
-                        履歷編號=p.ResumeID,
-                        會員編號=p.Resume.MemberID,
-                        工作編號=p.JobID,
-                        公司名稱=p.Job_Opportunities.Firm.FirmName,
-                        狀態=p.Status.Name,
-                        身份證字號=p.Resume.IdentityID,
-                        手機號碼=p.Resume.PhoneNumber,
-                        教育程度=p.Resume.Education.Name,
-                        工作經驗=p.Resume.WorkExp,
-                        //通訊地址=
-                        自我介紹=p.Resume.ResumeContent
-                    }).FirstOrDefault();
-            
+                     where p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString()) && p.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[2].Value.ToString())
+                     select new
+                     {
+                         履歷編號 = p.ResumeID,
+                         會員編號 = p.Resume.MemberID,
+                         工作編號 = p.JobID,
+                         公司名稱 = p.Job_Opportunities.Firm.FirmName,
+                         狀態 = p.Status.Name,
+                         身份證字號 = p.Resume.IdentityID,
+                         手機號碼 = p.Resume.PhoneNumber,
+                         教育程度 = p.Resume.Education.Name,
+                         工作經驗 = p.Resume.WorkExp,
+                         //通訊地址=
+                         自我介紹 = p.Resume.ResumeContent
+                     }).FirstOrDefault();
+
             this.textBox4.Text = q.履歷編號.ToString();
-            this.textBox9.Text=q.會員編號.ToString();
-            this.textBox10.Text=q.工作編號.ToString() ;
+            this.textBox9.Text = q.會員編號.ToString();
+            this.textBox10.Text = q.工作編號.ToString();
             this.textBox11.Text = q.公司名稱.ToString();
             this.textBox12.Text = q.狀態;
             this.textBox13.Text = q.身份證字號;
@@ -654,31 +663,6 @@ namespace Groot
             this.textBox16.Text = q.教育程度;
             this.textBox17.Text = q.工作經驗 + "年";
             this.richTextBox2.Text = q.自我介紹;
-        }
-
-        
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            //var j = from p in this.db.Job_Opportunities
-            //        select p;
-            //var q = (from p in this.db.Job_Opportunities.AsEnumerable()
-            //         where p.JobID == j.ToList()[this.listBox5.SelectedIndex].JobID
-            //         select p).FirstOrDefault();
-            //var r = (from p in this.db.Resumes.AsEnumerable()
-            //         where p.ResumeID == int.Parse(this.dataGridView3.CurrentRow.Cells[0].Value.ToString())
-            //         select p).FirstOrDefault();
-
-            //JobResume jr = new JobResume
-            //{
-            //    JobID = q.JobID,
-            //    ResumeID=r.ResumeID,
-            //    ApplyStatusID=5
-            //};
-            //this.db.JobResumes.Add(jr);
-            //this.db.SaveChanges();
-            //LoadMySendResumes();
-            //MessageBox.Show("應徵成功!");
         }
 
         private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -699,7 +683,6 @@ namespace Groot
 
                 if (o==null)
                 {
-                    
                     
                     var q = (from p in this.db.Job_Opportunities.AsEnumerable()
                              where p.JobID == j.ToList()[selectIndex].JobID
@@ -726,12 +709,6 @@ namespace Groot
                     MessageBox.Show("此工作機會已有您的應徵紀錄，請耐心等候");
                 }
             }
-        }
-
-        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -876,10 +853,38 @@ namespace Groot
             }
         }
 
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl1_Click(object sender, EventArgs e)
         {
-            
+            //====================================
+            //將所選技能帶入自我介紹
+            if (tabControl1.SelectedIndex == 1)
+            {
+                this.richTextBox1.Clear();
+                this.richTextBox1.Text = "我的技能：\r";
+                for (int i = 0; i < this.listBox3.Items.Count; i++)
+                {
+                    this.richTextBox1.Text += $"{i + 1}.{this.listBox3.Items[i]}\r";
+                }
+                remembertext = this.richTextBox1.Text;
+            }
+        }
+
+        
+        private void checkedListBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (this.checkedListBox1.CheckedItems.Count != 0)
+            {
+                this.richTextBox1.Text = remembertext;
+                this.richTextBox1.Text += "\r我的創作：\r";
+                for (int i = 0; i < this.checkedListBox1.CheckedItems.Count; i++)
+                {
+                    this.richTextBox1.Text += $"{i + 1}.{this.checkedListBox1.CheckedItems[i]}\r";
+                }
+            }
+            else
+            {
+                this.richTextBox1.Text = remembertext;
+            }
         }
     }
 }

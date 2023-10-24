@@ -23,10 +23,10 @@ namespace Groot
             InitializeComponent();
 
             Text = "廠商";
-            
+
             LoadID();
             LoadInfo();
-            
+
             LoadED();
             LoadRegion();
             LoadSkillClasses();
@@ -75,26 +75,26 @@ namespace Groot
             f.DefaultCellStyle.NullValue = "邀請";
 
 
-            var q= from p in this.db.Resumes.AsEnumerable()
-                   where p.ResumeStatusID==1
-                   select new
-                   {
-                       履歷編號=p.ResumeID,
-                       會員編號=p.MemberID,
-                       會員姓名=MaskString(p.FullName),
-                       身份證字號= MaskString(p.IdentityID),
-                       電話號碼= MaskString(p.PhoneNumber),
-                       擁有技能=p.ResumeSkills.Select(_=>_.Skill.Name).FirstOrDefault()+"等"+ p.ResumeSkills.Select(_ => _.Skill.Name).Count() + "項技能",
-                       履歷內容=p.ResumeContent,
-                       工作經驗=p.WorkExp+"年",
-                       學歷=p.Education.Name,
-                       狀態=p.Status.Name
-                   };
+            var q = from p in this.db.Resumes.AsEnumerable()
+                    where p.ResumeStatusID == 1
+                    select new
+                    {
+                        履歷編號 = p.ResumeID,
+                        會員編號 = p.MemberID,
+                        會員姓名 = MaskString(p.FullName),
+                        身份證字號 = MaskString(p.IdentityID),
+                        電話號碼 = MaskString(p.PhoneNumber),
+                        擁有技能 = p.ResumeSkills.Select(_ => _.Skill.Name).FirstOrDefault() + "等" + p.ResumeSkills.Select(_ => _.Skill.Name).Count() + "項技能",
+                        履歷內容 = p.ResumeContent,
+                        工作經驗 = p.WorkExp + "年",
+                        學歷 = p.Education.Name,
+                        狀態 = p.Status.Name
+                    };
             this.dataGridView3.DataSource = q.ToList();
             this.dataGridView3.Columns.Add(f);
         }
 
-        
+
 
         private void LoadID()
         {
@@ -105,23 +105,23 @@ namespace Groot
         private void LoadReleaseJob()
         {
             var q = from p in this.db.Job_Opportunities.AsEnumerable()
-                    where p.FirmID== int.Parse(currentID)
+                    where p.FirmID == int.Parse(currentID)
                     select new
                     {
-                        公司編號=p.FirmID,
-                        公司名稱=p.Firm.FirmName,
-                        工作編號=p.JobID,
-                        應徵內容=p.JobContent,
-                        需求人數= p.RequiredNum+"人",
-                        薪水=p.Salary,
-                        狀態=p.Status.Name,
-                        工作經驗=p.JobExp,
-                        更新時間=p.ModifiedDate
+                        公司編號 = p.FirmID,
+                        公司名稱 = p.Firm.FirmName,
+                        工作編號 = p.JobID,
+                        應徵內容 = p.JobContent,
+                        需求人數 = p.RequiredNum + "人",
+                        薪水 = p.Salary,
+                        狀態 = p.Status.Name,
+                        工作經驗 = p.JobExp,
+                        更新時間 = p.ModifiedDate
                     };
             this.dataGridView2.DataSource = q.ToList();
 
             this.listBox4.Items.Add($"{"工作編號",-15}-{"應徵內容",-15}-{"狀態",-15}");
-            foreach(var i in q)
+            foreach (var i in q)
             {
                 this.listBox4.Items.Add($"{i.工作編號,-15}-{i.應徵內容,-15}-{i.狀態,-15}");
             }
@@ -131,17 +131,17 @@ namespace Groot
         {
             var q = from p in this.db.Regions
                     select p;
-            foreach(var item in q)
+            foreach (var item in q)
             {
                 this.comboBox2.Items.Add(item.City);
             }
         }
 
-        
+
         private void LoadInfo()
         {
             var q = from p in this.db.Firms.AsEnumerable()
-                    where p.FirmID == int.Parse(currentID)  
+                    where p.FirmID == int.Parse(currentID)
                     select p;
 
             if (q.Any(n => n.FirmID == int.Parse(currentID)))
@@ -165,7 +165,7 @@ namespace Groot
         }
 
         private void LoadReceiveResume()
-        {   
+        {
             db = new DB_GamingFormEntities();
             var q = from p in this.db.JobResumes.AsEnumerable()
                     where p.Job_Opportunities.FirmID == int.Parse(currentID)
@@ -178,13 +178,13 @@ namespace Groot
                         身份證字號 = p.Resume.IdentityID,
                         手機號碼 = p.Resume.PhoneNumber,
                         工作經驗 = p.Resume.WorkExp,
-                        狀態=p.Status.Name,
-                        
+                        狀態 = p.Status.Name,
+
                     };
             this.dataGridView1.DataSource = q.ToList();
         }
 
-        
+
 
         private void LoadED()
         {
@@ -211,7 +211,7 @@ namespace Groot
             //狀態
             var x = (from p in this.db.JobResumes.AsEnumerable()
                      where p.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
-                     && p.ResumeID==int.Parse(this.dataGridView1.CurrentRow.Cells[1].Value.ToString())
+                     && p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[1].Value.ToString())
                      select p).FirstOrDefault();
 
             x.ApplyStatusID = s;
@@ -219,7 +219,7 @@ namespace Groot
             this.db.SaveChanges();
             LoadReceiveResume();
 
-            
+
         }
 
         //============================================================================
@@ -230,7 +230,7 @@ namespace Groot
             this.tabControl1.SelectedIndex += 1;
         }
 
-        
+
         private void button7_Click_1(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex += 1;
@@ -241,14 +241,14 @@ namespace Groot
             this.tabControl1.SelectedIndex -= 1;
         }
 
-       
+
 
         private void button11_Click_1(object sender, EventArgs e)
         {
             this.tabControl1.SelectedIndex -= 1;
         }
 
-        
+
         ListBox llb = new ListBox();
 
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -341,7 +341,7 @@ namespace Groot
             List<string> skics = new List<string>();
             var a = from p in this.db.SkillClasses
                     select p;
-            foreach(var g in a)
+            foreach (var g in a)
             {
                 skics.Add(g.Name);
             }
@@ -370,10 +370,6 @@ namespace Groot
             LoadReceiveResume();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -396,8 +392,8 @@ namespace Groot
             //基本資料
             var q = from p in this.db.Educations
                     select p;
-            var r= from p in this.db.Regions
-                   select p;
+            var r = from p in this.db.Regions
+                    select p;
 
             Job_Opportunity f = new Job_Opportunity
             {
@@ -460,9 +456,9 @@ namespace Groot
         }
 
 
-        
 
-        
+
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -490,15 +486,15 @@ namespace Groot
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            //開啟
+            //工作狀態開啟
             var q = (from p in this.db.Job_Opportunities.AsEnumerable()
-                    where p.JobID == int.Parse(this.dataGridView2.CurrentRow.Cells[2].Value.ToString())
-                    select p).FirstOrDefault();
+                     where p.JobID == int.Parse(this.dataGridView2.CurrentRow.Cells[2].Value.ToString())
+                     select p).FirstOrDefault();
 
             if (q == null) return;
 
             q.JobStatusID = 3;
-            q.ModifiedDate= DateTime.Now;
+            q.ModifiedDate = DateTime.Now;
 
             this.db.SaveChanges();
             LoadReleaseJob();
@@ -506,7 +502,7 @@ namespace Groot
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            //關閉
+            //工作狀態關閉
             var q = (from p in this.db.Job_Opportunities.AsEnumerable()
                      where p.JobID == int.Parse(this.dataGridView2.CurrentRow.Cells[2].Value.ToString())
                      select p).FirstOrDefault();
@@ -520,15 +516,15 @@ namespace Groot
             LoadReleaseJob();
 
 
-            
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var q = (from p in this.db.JobResumes.AsEnumerable()
-                    where p.Job_Opportunities.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString()) 
-                    && p.ApplyStatusID == 5
-                    select p).FirstOrDefault();
+                     where p.Job_Opportunities.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
+                     && p.ApplyStatusID == 5
+                     select p).FirstOrDefault();
             if (q == null) return;
             ChangeApplyStatusID(6);
         }
@@ -569,9 +565,9 @@ namespace Groot
 
             //=============================================
             //JobResumes
-            var qqqqq =from p in this.db.JobResumes.AsEnumerable()
-                      where p.JobID == jobdd
-                      select p;
+            var qqqqq = from p in this.db.JobResumes.AsEnumerable()
+                        where p.JobID == jobdd
+                        select p;
             foreach (var i in qqqqq)
             {
                 this.db.JobResumes.Remove(i);
@@ -581,8 +577,8 @@ namespace Groot
             //=============================================
             //Job_Opportunities(PK)
             var q = (from p in this.db.Job_Opportunities.AsEnumerable()
-                    where p.JobID == int.Parse(this.dataGridView2.CurrentRow.Cells[2].Value.ToString())
-                    select p).FirstOrDefault();
+                     where p.JobID == int.Parse(this.dataGridView2.CurrentRow.Cells[2].Value.ToString())
+                     select p).FirstOrDefault();
 
             this.db.Job_Opportunities.Remove(q);
             this.db.SaveChanges();
@@ -592,16 +588,16 @@ namespace Groot
 
         private void button13_Click(object sender, EventArgs e)
         {
-            var q =from p in this.db.JobResumes.AsEnumerable()
-                   where p.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString()) 
-                   &&p.ResumeID== int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
-                   select p;
+            var q = from p in this.db.JobResumes.AsEnumerable()
+                    where p.JobID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
+                    && p.ResumeID == int.Parse(this.dataGridView1.CurrentRow.Cells[0].Value.ToString())
+                    select p;
 
-            foreach(var r in q)
+            foreach (var r in q)
             {
                 this.db.JobResumes.Remove(r);
             }
-            
+
             this.db.SaveChanges();
 
             LoadReceiveResume();
@@ -614,7 +610,7 @@ namespace Groot
                 if (this.listBox4.SelectedItems != null)
                 {
 
-                    
+
                     string selectJobID;
                     selectJobID = this.listBox4.SelectedItem.ToString().Split('-')[0].Trim();
 
