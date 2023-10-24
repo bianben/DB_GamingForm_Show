@@ -318,28 +318,6 @@ namespace Groot
 
         private void listBox2_DoubleClick(object sender, EventArgs e)
         {
-            //=================================
-            //treeview
-            //todo 點listbox在treeview加入當下點選的大類及小類，點多少加多少
-
-            //this.treeView1.Nodes.Clear();
-
-            //var q = from p in this.db.Skills
-            //        where p.Name.Equals(this.listBox2.Text)
-            //        group p by p.SkillClass into g
-            //        select new { skillclass = g.Key.Name, mygroup = g };
-
-            //foreach(var s in q)
-            //{
-            //    //saving = this.treeView1.Nodes.Add(s.skillclass.ToString());
-            //    saving = this.treeView1.Nodes.Add(s.skillclass);
-            //    foreach (var items in s.mygroup)
-            //    {
-            //        saving.Nodes.Add(items.Name);
-            //    }
-            //    saving.Toggle();
-            //}
-
             //===============================
             //listbox
             this.listBox3.Items.Clear();
@@ -440,7 +418,6 @@ namespace Groot
 
             //=========================
             //技能專長
-            //todo
             int lb3Length = this.listBox3.Items.Count;
             string[] lb3items = new string[lb3Length];
 
@@ -463,13 +440,6 @@ namespace Groot
                 this.db.JobSkills.Add(jobSkill);
             }
             this.db.SaveChanges();
-            //=========================
-            //自傳附件
-
-
-
-
-
             //=========================
             MessageBox.Show("新增成功");
             this.tabControl2.SelectedIndex = 2;
@@ -653,7 +623,7 @@ namespace Groot
                     var q = (from p in this.db.JobResumes.AsEnumerable()
                              where p.JobID == int.Parse(selectJobID)
                              && p.ResumeID == int.Parse(this.dataGridView3.CurrentRow.Cells[1].Value.ToString())
-                             //todo 為什麼欄位0取不到值???????????????????????????????
+                             //Todo MakeJobRequire為什麼欄位0取不到值???????????????????????????????
                              select p).FirstOrDefault();
 
                     if (q != null)

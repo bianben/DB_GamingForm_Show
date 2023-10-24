@@ -97,7 +97,7 @@ namespace Groot
 
         private void LoadMySendResumes()
         {
-            //Todo 純粹沒renew entities
+            //Todo MakeResumes純粹沒renew entities
             db = new DB_GamingFormEntities();
             var q = from p in this.db.JobResumes.AsEnumerable()
                     where p.Resume.MemberID == int.Parse(currentID)
@@ -141,7 +141,7 @@ namespace Groot
                 
                 this.textBox2.Text = q.FirstOrDefault().PhoneNumber;
 
-                //todo (已解決)combox 用 index設定不到值 loaditems的程式碼要在前
+                //Todo MakeResumes(已解決)combox 用 index設定不到值 loaditems的程式碼要在前
                 this.comboBox1.SelectedIndex = (int)(q.FirstOrDefault().EDID - 1);
                 //this.comboBox1.Text = q.FirstOrDefault().Education.Name;
 
@@ -213,7 +213,7 @@ namespace Groot
                 //判斷有無履歷，沒有則提示未建立履歷
                 if (s.Any())
                 {   
-                    //Todo 新增履歷第一筆失敗 #加入下面一行後已修正
+                    //Todo MakeResumes新增履歷第一筆失敗 #加入下面一行後已修正
                     db = new DB_GamingFormEntities();
                     //==================================================
                     //datagridview
@@ -250,7 +250,7 @@ namespace Groot
                 }
                 else
                 {   
-                    //Todo 刪除個人履歷沒有刷新 加入下兩行後已排除
+                    //Todo MakeJobRequire刪除個人履歷沒有刷新 加入下兩行後已排除
                     MessageBox.Show("尚無履歷資料，將跳至建立履歷頁面");
                     this.dataGridView2.DataSource = null;
                     this.dataGridView3.DataSource = null;
@@ -367,6 +367,7 @@ namespace Groot
                 this.db.Images.Add(i);
                 this.db.SaveChanges();
                 //=========================
+                //個人履歷
 
                 var q = from p in this.db.Educations
                         select p;
@@ -389,15 +390,7 @@ namespace Groot
                 this.db.Resumes.Add(f);
                 this.db.SaveChanges();
                 //=========================
-                //個人經歷
-
-
-                //=========================
-                //求職條件
-
-                //=========================
                 //技能專長
-                //todo
                 int lb3Length = this.listBox3.Items.Count;
                 string[] lb3items = new string[lb3Length];
 
@@ -439,28 +432,6 @@ namespace Groot
 
         private void listBox2_DoubleClick(object sender, EventArgs e)
         {
-            //=================================
-            //treeview
-            //todo 點listbox在treeview加入當下點選的大類及小類，點多少加多少
-
-            //this.treeView1.Nodes.Clear();
-
-            //var q = from p in this.db.Skills
-            //        where p.Name.Equals(this.listBox2.Text)
-            //        group p by p.SkillClass into g
-            //        select new { skillclass = g.Key.Name, mygroup = g };
-
-            //foreach(var s in q)
-            //{
-            //    //saving = this.treeView1.Nodes.Add(s.skillclass.ToString());
-            //    saving = this.treeView1.Nodes.Add(s.skillclass);
-            //    foreach (var items in s.mygroup)
-            //    {
-            //        saving.Nodes.Add(items.Name);
-            //    }
-            //    saving.Toggle();
-            //}
-
             //===============================
             //listbox
             this.listBox3.Items.Clear();
