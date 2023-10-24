@@ -23,7 +23,12 @@ namespace DBGaming
             LoadSubBlog();
         }
 
-        
+        public class Employee
+        {
+            public int EmployeeId { get; set; }
+            public string Name { get; set; }
+            public int ManagerId { get; set; }
+        }
 
         //DB_GamingFormEntities1 db = new DB_GamingFormEntities1();
         DB_GamingFormEntities db = new DB_GamingFormEntities();
@@ -32,93 +37,47 @@ namespace DBGaming
         {
             this.menuStrip1.Items.Clear();
 
-//            //var q = from p in this.db.SubBlogs
-//            //        join pp in this.db.SubBlogs
-//            //        on p.ParentBlogID equals pp.SubBlogID
-//            //        //select pp;
-//            //        into SubBlogs
-//            //        from SubBlog in SubBlogs.DefaultIfEmpty()
-//            //        select new
-//            //        {
-//            //            subTitle = p.Title,
-//            //            parentTitle = (SubBlog != null) ? SubBlog.Title : "主版"
-//            //        };
+            //var q = from p in this.db.SubBlogs
+            //        join pp in this.db.SubBlogs
+            //        on p.ParentBlogID equals pp.SubBlogID
+            //        //select pp;
+            //        into SubBlogs
+            //        from SubBlog in SubBlogs.DefaultIfEmpty()
+            //        select new
+            //        {
+            //            subTitle = p.Title,
+            //            parentTitle = (SubBlog != null) ? SubBlog.Title : "主版"
+            //        };
 
-//            var q = from p in this.db.SubBlogs
-//                    join pp in this.db.SubBlogs
-//                    on p.ParentBlogID equals pp.SubBlogID
-//                    //select pp;
-//                    into SubBlogs
-//                    from SubBlog in SubBlogs.DefaultIfEmpty()
-//                    group p by p.Title into s
-//                    select new
-//                    {
-//                        s.Key,
-//                        MyGroup=s
-//                    };
-
-            
-
-
-//            foreach(var g in q)
-//            {
-//                TreeNode s=this.treeView1.Nodes.Add(g.Key.ToString());
-//                foreach(var items in g.MyGroup)
-//                {
-//                    s.Nodes.Add(items.ToString());
-//                }
-//            }
-
-
-//            this.dataGridView3.DataSource = q.ToList();
+            var q = from p in this.db.SubBlogs
+                    join pp in this.db.SubBlogs
+                    on p.ParentBlogID equals pp.SubBlogID
+                    //select pp;
+                    into SubBlogs
+                    from SubBlog in SubBlogs.DefaultIfEmpty()
+                    group p by p.Title into s
+                    select new
+                    {
+                        s.Key,
+                        MyGroup = s
+                    };
 
 
 
 
-
-//            var employees = new List<Employee>
-//{
-//    new Employee { EmployeeId = 1, Name = "CEO", ManagerId = 0 },
-//    new Employee { EmployeeId = 2, Name = "Manager A", ManagerId = 1 },
-//    new Employee { EmployeeId = 3, Name = "Manager B", ManagerId = 1 },
-//    new Employee { EmployeeId = 4, Name = "Employee 1", ManagerId = 2 },
-//    new Employee { EmployeeId = 5, Name = "Employee 2", ManagerId = 2 },
-//    new Employee { EmployeeId = 6, Name = "Employee 3", ManagerId = 3 }
-//};
-
-//            // 创建根节点
-//            var rootNode = employees.Single(e => e.ManagerId == 0);
-//            var treeView = new TreeView();
+            foreach (var g in q)
+            {
+                TreeNode s = this.treeView1.Nodes.Add(g.Key.ToString());
+                foreach (var items in g.MyGroup)
+                {
+                    s.Nodes.Add(items.ToString());
+                }
+            }
 
 
+            this.dataGridView3.DataSource = q.ToList();
 
 
-//            treeView.Nodes.Add(CreateNode(rootNode, employees));
-
-//            TreeNode CreateNode(Employee employee, List<Employee> employeeList)
-//            {
-//                var node = new TreeNode(employee.Name);
-
-//                var subordinates = employeeList.Where(e => e.ManagerId == employee.EmployeeId);
-
-//                foreach (var subordinate in subordinates)
-//                {
-//                    node.Nodes.Add(CreateNode(subordinate, employeeList));
-//                }
-
-//                return node;
-//            }
-//            this.Controls.Add(treeView);
-
-
-//            var r = from p in this.db.SubBlogs
-//                    select new
-//                    {
-//                        p.SubBlogID,
-//                        p.ParentBlogID
-//                    };
-//            var rootblog=r.
-//            treeView1.Nodes.Add()
 
         }
         private void LoadBlog()
