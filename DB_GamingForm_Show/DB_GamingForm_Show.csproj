@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{401F93B5-73D5-4FF1-84B1-7381A5F2C069}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DB_GamingForm_Show</RootNamespace>
+    <AssemblyName>DB_GamingForm_Show</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdminRank.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Advertise.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Article.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleAction.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Blog.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Blog\ArtAndReply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Blog\ArtAndReply.designer.cs">
+      <DependentUpon>ArtAndReply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Blog\FormHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Blog\FormHome.designer.cs">
+      <DependentUpon>FormHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Blog\NewART.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Blog\NewART.designer.cs">
+      <DependentUpon>NewART.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Certificate.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class\MyMethod.cs" />
+    <Compile Include="Education.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Firm.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Job\3-2. FrmMakeResume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job\3-2. FrmMakeResume.designer.cs">
+      <DependentUpon>3-2. FrmMakeResume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Job\4-2. FrmMakeJobRequire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job\4-2. FrmMakeJobRequire.designer.cs">
+      <DependentUpon>4-2. FrmMakeJobRequire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Job\ClsJob.cs" />
+    <Compile Include="Job\FrmJobMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job\FrmJobMainPage.Designer.cs">
+      <DependentUpon>FrmJobMainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Job\FrmResumeMainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Job\FrmResumeMainPage.Designer.cs">
+      <DependentUpon>FrmResumeMainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GMModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GMModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GMModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GMModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GMModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobAdvertise.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobCertificate.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobResume.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobSkill.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Job_Opportunity.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Member.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MemberStatu.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MemberTag.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Member\ClassUtility.cs" />
+    <Compile Include="Member\FirmFrmRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\FirmFrmRegistration.designer.cs">
+      <DependentUpon>FirmFrmRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\FrmFirmProfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\FrmFirmProfiles.designer.cs">
+      <DependentUpon>FrmFirmProfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\FrmResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\FrmResetPassword.designer.cs">
+      <DependentUpon>FrmResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\HomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\HomePage.designer.cs">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\Member_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\Member_Detail.designer.cs">
+      <DependentUpon>Member_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\Member_Firm.cs" />
+    <Compile Include="Member\Member_Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\Member_Home.designer.cs">
+      <DependentUpon>Member_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\NFrmRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\NFrmRegistration.designer.cs">
+      <DependentUpon>NFrmRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\ResetPassword.designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member\ShowArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Member\ShowArticle.designer.cs">
+      <DependentUpon>ShowArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProduct.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAdvertise.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductEvaluate.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductTag.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product\AddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\AddProduct.designer.cs">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\COrder.cs" />
+    <Compile Include="Product\COrderProduct.cs" />
+    <Compile Include="Product\CProduct.cs" />
+    <Compile Include="Product\CShoppingCar.cs" />
+    <Compile Include="Product\FrmCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\FrmCar.designer.cs">
+      <DependentUpon>FrmCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\FrmMemberShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\FrmMemberShop.designer.cs">
+      <DependentUpon>FrmMemberShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\FrmProductEvaluate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\FrmProductEvaluate.designer.cs">
+      <DependentUpon>FrmProductEvaluate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\FrmPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\FrmPurchase.designer.cs">
+      <DependentUpon>FrmPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\FrmUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\FrmUpdateProduct.designer.cs">
+      <DependentUpon>FrmUpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegionDistrict.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reply.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReplyAction.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReplyImage.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resume.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResumeCertificate.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResumeSkill.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResumeStyle.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SerachRecord.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShipMethod.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Skill.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkillClass.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubBlog.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubBolgCategory.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubTag.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tag.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WishList.cs">
+      <DependentUpon>GMModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Blog\ArtAndReply.resx">
+      <DependentUpon>ArtAndReply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Blog\FormHome.resx">
+      <DependentUpon>FormHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Blog\NewART.resx">
+      <DependentUpon>NewART.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job\3-2. FrmMakeResume.resx">
+      <DependentUpon>3-2. FrmMakeResume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job\4-2. FrmMakeJobRequire.resx">
+      <DependentUpon>4-2. FrmMakeJobRequire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job\FrmJobMainPage.resx">
+      <DependentUpon>FrmJobMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Job\FrmResumeMainPage.resx">
+      <DependentUpon>FrmResumeMainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\FirmFrmRegistration.resx">
+      <DependentUpon>FirmFrmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\FrmFirmProfiles.resx">
+      <DependentUpon>FrmFirmProfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\FrmResetPassword.resx">
+      <DependentUpon>FrmResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\HomePage.resx">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\Member_Detail.resx">
+      <DependentUpon>Member_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\Member_Home.resx">
+      <DependentUpon>Member_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\NFrmRegistration.resx">
+      <DependentUpon>NFrmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Member\ShowArticle.resx">
+      <DependentUpon>ShowArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\AddProduct.resx">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\FrmCar.resx">
+      <DependentUpon>FrmCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\FrmMemberShop.resx">
+      <DependentUpon>FrmMemberShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\FrmProductEvaluate.resx">
+      <DependentUpon>FrmProductEvaluate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\FrmPurchase.resx">
+      <DependentUpon>FrmPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product\FrmUpdateProduct.resx">
+      <DependentUpon>FrmUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="GMModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GMModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GMModel.edmx.diagram">
+      <DependentUpon>GMModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GMModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GMModel.Context.cs</LastGenOutput>
+      <DependentUpon>GMModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="GMModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GMModel.edmx</DependentUpon>
+      <LastGenOutput>GMModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\images.jfif" />
+    <None Include="Resources\d1ce2a7a5e56eb423e02efb9466cea4f_preview_mid.jpg" />
+    <None Include="Resources\p1982532a717553240-ss.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

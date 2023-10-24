@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB_GamingForm_Show", "DB_GamingForm_Show\DB_GamingForm_Show.csproj", "{401F93B5-73D5-4FF1-84B1-7381A5F2C069}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{401F93B5-73D5-4FF1-84B1-7381A5F2C069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401F93B5-73D5-4FF1-84B1-7381A5F2C069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401F93B5-73D5-4FF1-84B1-7381A5F2C069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401F93B5-73D5-4FF1-84B1-7381A5F2C069}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81795AE5-5986-4630-9DD3-38351BFE942B}
+	EndGlobalSection
+EndGlobal
