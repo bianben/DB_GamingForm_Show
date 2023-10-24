@@ -1,0 +1,3656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_GamingFormModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminPassword" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="RankID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdminRank">
+          <Key>
+            <PropertyRef Name="RankID" />
+          </Key>
+          <Property Name="RankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RK_Product" Type="bit" Nullable="false" />
+          <Property Name="RK_Member" Type="bit" Nullable="false" />
+          <Property Name="RK_Blog" Type="bit" Nullable="false" />
+          <Property Name="RK_Firm" Type="bit" Nullable="false" />
+          <Property Name="RK_Order" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="AdvertiseID" />
+          </Key>
+          <Property Name="AdvertiseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubBlogID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArticleContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticleAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="ActionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubTagID" Type="int" Nullable="false" />
+          <Property Name="ImageID" Type="int" />
+        </EntityType>
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="CertificateID" />
+          </Key>
+          <Property Name="CertificateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="EDID" />
+          </Key>
+          <Property Name="EDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="FirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirmName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaxID" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirmAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirmScale" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirmIntro" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="ImageID" Type="int" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job Opportunities">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirmID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" Nullable="false" />
+          <Property Name="RequiredNum" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobExp" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobContent" Type="nvarchar(max)" />
+          <Property Name="JobStatusID" Type="int" Nullable="false" />
+          <Property Name="EDID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobAdvertise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+          <Property Name="AdvertiseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobCertificate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificateID" Type="int" Nullable="false" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobResume">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+          <Property Name="ResumeID" Type="int" Nullable="false" />
+          <Property Name="ApplyStatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillID" Type="int" Nullable="false" />
+          <Property Name="JobID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="24" Nullable="false" />
+          <Property Name="Birth" Type="date" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageID" Type="int" Nullable="false" />
+          <Property Name="Mycomment" Type="ntext" />
+          <Property Name="BonusPoint" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemberStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemeberID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemberTag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="TagID" Type="int" />
+          <Property Name="SubTagID" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="FirmID" Type="int" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="PaymentDate" Type="date" />
+          <Property Name="ShippingDate" Type="date" />
+          <Property Name="CompletedDate" Type="date" />
+          <Property Name="PaymentID" Type="int" Nullable="false" />
+          <Property Name="ShipID" Type="int" Nullable="false" />
+          <Property Name="Zipcode" Type="int" />
+          <Property Name="ShipAddress" Type="nvarchar(max)" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="Quantinty" Type="int" Nullable="false" />
+          <Property Name="Disconut" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="AvailableDate" Type="date" Nullable="false" />
+          <Property Name="ProductContent" Type="nvarchar(max)" />
+          <Property Name="UnitStock" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="FirmID" Type="int" />
+          <Property Name="ImageID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductAdvertise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="AdvertiseID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductEvaluate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="EvaLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="EvaContent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductTag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="SubTagID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegionDistrict">
+          <Key>
+            <PropertyRef Name="Zipcode" />
+          </Key>
+          <Property Name="Zipcode" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" Nullable="false" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="ReplyID" />
+          </Key>
+          <Property Name="ReplyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="int" Nullable="false" />
+          <Property Name="ReplyContents" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReplyAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="ReplyID" Type="int" Nullable="false" />
+          <Property Name="ActionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReplyImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ReplyID" Type="int" Nullable="false" />
+          <Property Name="ImageID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resume">
+          <Key>
+            <PropertyRef Name="ResumeID" />
+          </Key>
+          <Property Name="ResumeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdentityID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResumeContent" Type="nvarchar(max)" />
+          <Property Name="WorkExp" Type="nvarchar(max)" />
+          <Property Name="FormID" Type="int" Nullable="false" />
+          <Property Name="ResumeStatusID" Type="int" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="EDID" Type="int" />
+        </EntityType>
+        <EntityType Name="ResumeCertificate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResumeID" Type="int" Nullable="false" />
+          <Property Name="CertificateID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResumeSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResumeID" Type="int" Nullable="false" />
+          <Property Name="SkillID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResumeStyle">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SerachRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateDays" Type="date" Nullable="false" />
+          <Property Name="IsMember" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShipMethod">
+          <Key>
+            <PropertyRef Name="ShipID" />
+          </Key>
+          <Property Name="ShipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillClassID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkillClass">
+          <Key>
+            <PropertyRef Name="SkillClassID" />
+          </Key>
+          <Property Name="SkillClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubBlog">
+          <Key>
+            <PropertyRef Name="SubBlogID" />
+          </Key>
+          <Property Name="SubBlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BlogID" Type="int" Nullable="false" />
+          <Property Name="ParentBlogID" Type="int" />
+          <Property Name="IsMemberBlog" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubBolgCategories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubBlogID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubTag">
+          <Key>
+            <PropertyRef Name="SubTagID" />
+          </Key>
+          <Property Name="SubTagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TagID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AD_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Advertise">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_AdminRank">
+          <End Role="AdminRank" Type="Self.AdminRank" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRank">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_SubBlog">
+          <End Role="SubBlog" Type="Self.SubBlog" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubBlog">
+              <PropertyRef Name="SubBlogID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="SubBlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAction_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="ArticleAction" Type="Self.ArticleAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionID" />
+            </Principal>
+            <Dependent Role="ArticleAction">
+              <PropertyRef Name="ActionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAction_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleAction" Type="Self.ArticleAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="ArticleAction">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAction_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="ArticleAction" Type="Self.ArticleAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ArticleAction">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_SubTag">
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTag">
+              <PropertyRef Name="SubTagID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="SubTagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Firm_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Firm" Type="Self.Firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Firm">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Firm_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Firm" Type="Self.Firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Firm">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job Opportunities_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="EDID" />
+            </Principal>
+            <Dependent Role="Job Opportunities">
+              <PropertyRef Name="EDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job Opportunities_Firm">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="Job Opportunities">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job Opportunities_Region1">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="Job Opportunities">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job Opportunities_Status1">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Job Opportunities">
+              <PropertyRef Name="JobStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobAdvertise_AD">
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="1" />
+          <End Role="JobAdvertise" Type="Self.JobAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Principal>
+            <Dependent Role="JobAdvertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobAdvertise_Job Opportunities">
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="1" />
+          <End Role="JobAdvertise" Type="Self.JobAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobAdvertise">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobCertificate_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="JobCertificate" Type="Self.JobCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="CertificateID" />
+            </Principal>
+            <Dependent Role="JobCertificate">
+              <PropertyRef Name="CertificateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobCertificate_Job Opportunities">
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="1" />
+          <End Role="JobCertificate" Type="Self.JobCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobCertificate">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResume_Job Opportunities">
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="1" />
+          <End Role="JobResume" Type="Self.JobResume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobResume">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResume_Resume">
+          <End Role="Resume" Type="Self.Resume" Multiplicity="1" />
+          <End Role="JobResume" Type="Self.JobResume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeID" />
+            </Principal>
+            <Dependent Role="JobResume">
+              <PropertyRef Name="ResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResume_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="JobResume" Type="Self.JobResume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="JobResume">
+              <PropertyRef Name="ApplyStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobSkill_Job Opportunities">
+          <End Role="Job Opportunities" Type="Self.Job Opportunities" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobSkill_Skill">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="SkillID" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberStatus_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MemberStatus" Type="Self.MemberStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberStatus">
+              <PropertyRef Name="MemeberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberStatus_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="MemberStatus" Type="Self.MemberStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="MemberStatus">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTag_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MemberTag" Type="Self.MemberTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberTag">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTag_SubTag">
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="0..1" />
+          <End Role="MemberTag" Type="Self.MemberTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTag">
+              <PropertyRef Name="SubTagID" />
+            </Principal>
+            <Dependent Role="MemberTag">
+              <PropertyRef Name="SubTagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
+          <End Role="MemberTag" Type="Self.MemberTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="MemberTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Firm">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_RegionDistrict">
+          <End Role="RegionDistrict" Type="Self.RegionDistrict" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionDistrict">
+              <PropertyRef Name="Zipcode" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Zipcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ShipMethod">
+          <End Role="ShipMethod" Type="Self.ShipMethod" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShipMethod">
+              <PropertyRef Name="ShipID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAction_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductTag">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAction_SubTag">
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="1" />
+          <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTag">
+              <PropertyRef Name="SubTagID" />
+            </Principal>
+            <Dependent Role="ProductTag">
+              <PropertyRef Name="SubTagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAdvertise_AD">
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="1" />
+          <End Role="ProductAdvertise" Type="Self.ProductAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Principal>
+            <Dependent Role="ProductAdvertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAdvertise_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductAdvertise" Type="Self.ProductAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductAdvertise">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductEvaluate_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="ProductEvaluate" Type="Self.ProductEvaluate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ProductEvaluate">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductEvaluate_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductEvaluate" Type="Self.ProductEvaluate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductEvaluate">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegionDistrict_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="RegionDistrict" Type="Self.RegionDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="RegionDistrict">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="0..1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="EDID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="EDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_ResumeStyle">
+          <End Role="ResumeStyle" Type="Self.ResumeStyle" Multiplicity="1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResumeStyle">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="FormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="ResumeStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeCertificate_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="ResumeCertificate" Type="Self.ResumeCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="CertificateID" />
+            </Principal>
+            <Dependent Role="ResumeCertificate">
+              <PropertyRef Name="CertificateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeCertificate_Resume">
+          <End Role="Resume" Type="Self.Resume" Multiplicity="1" />
+          <End Role="ResumeCertificate" Type="Self.ResumeCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeID" />
+            </Principal>
+            <Dependent Role="ResumeCertificate">
+              <PropertyRef Name="ResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSkill_Resume">
+          <End Role="Resume" Type="Self.Resume" Multiplicity="1" />
+          <End Role="ResumeSkill" Type="Self.ResumeSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeID" />
+            </Principal>
+            <Dependent Role="ResumeSkill">
+              <PropertyRef Name="ResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSkill_Skill">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="ResumeSkill" Type="Self.ResumeSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="SkillID" />
+            </Principal>
+            <Dependent Role="ResumeSkill">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skill_SkillClass">
+          <End Role="SkillClass" Type="Self.SkillClass" Multiplicity="1" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillClass">
+              <PropertyRef Name="SkillClassID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="SkillClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubBlog_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="SubBlog" Type="Self.SubBlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="SubBlog">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="SubTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_GamingFormModelStoreContainer">
+          <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminRank" EntityType="Self.AdminRank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleAction" EntityType="Self.ArticleAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firm" EntityType="Self.Firm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job Opportunities" EntityType="Self.Job Opportunities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobAdvertise" EntityType="Self.JobAdvertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobCertificate" EntityType="Self.JobCertificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobResume" EntityType="Self.JobResume" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobSkill" EntityType="Self.JobSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberStatus" EntityType="Self.MemberStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberTag" EntityType="Self.MemberTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductAdvertise" EntityType="Self.ProductAdvertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductEvaluate" EntityType="Self.ProductEvaluate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTag" EntityType="Self.ProductTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegionDistrict" EntityType="Self.RegionDistrict" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reply" EntityType="Self.Reply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReplyAction" EntityType="Self.ReplyAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReplyImage" EntityType="Self.ReplyImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resume" EntityType="Self.Resume" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumeCertificate" EntityType="Self.ResumeCertificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumeSkill" EntityType="Self.ResumeSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumeStyle" EntityType="Self.ResumeStyle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SerachRecord" EntityType="Self.SerachRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShipMethod" EntityType="Self.ShipMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkillClass" EntityType="Self.SkillClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubBlog" EntityType="Self.SubBlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubBolgCategories" EntityType="Self.SubBolgCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubTag" EntityType="Self.SubTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AD_Status" Association="Self.FK_AD_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Advertise" EntitySet="Advertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_AdminRank" Association="Self.FK_Admin_AdminRank">
+            <End Role="AdminRank" EntitySet="AdminRank" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Member" Association="Self.FK_Article_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_SubBlog" Association="Self.FK_Article_SubBlog">
+            <End Role="SubBlog" EntitySet="SubBlog" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAction_Action" Association="Self.FK_ArticleAction_Action">
+            <End Role="Action" EntitySet="Action" />
+            <End Role="ArticleAction" EntitySet="ArticleAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAction_Article" Association="Self.FK_ArticleAction_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleAction" EntitySet="ArticleAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAction_Member" Association="Self.FK_ArticleAction_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ArticleAction" EntitySet="ArticleAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_Image" Association="Self.FK_Blog_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_SubTag" Association="Self.FK_Blog_SubTag">
+            <End Role="SubTag" EntitySet="SubTag" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Firm_Image" Association="Self.FK_Firm_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Firm" EntitySet="Firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Firm_Status" Association="Self.FK_Firm_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Firm" EntitySet="Firm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job Opportunities_Education" Association="Self.FK_Job Opportunities_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job Opportunities_Firm" Association="Self.FK_Job Opportunities_Firm">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job Opportunities_Region1" Association="Self.FK_Job Opportunities_Region1">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job Opportunities_Status1" Association="Self.FK_Job Opportunities_Status1">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobAdvertise_AD" Association="Self.FK_JobAdvertise_AD">
+            <End Role="Advertise" EntitySet="Advertise" />
+            <End Role="JobAdvertise" EntitySet="JobAdvertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobAdvertise_Job Opportunities" Association="Self.FK_JobAdvertise_Job Opportunities">
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+            <End Role="JobAdvertise" EntitySet="JobAdvertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobCertificate_Certificate" Association="Self.FK_JobCertificate_Certificate">
+            <End Role="Certificate" EntitySet="Certificate" />
+            <End Role="JobCertificate" EntitySet="JobCertificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobCertificate_Job Opportunities" Association="Self.FK_JobCertificate_Job Opportunities">
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+            <End Role="JobCertificate" EntitySet="JobCertificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResume_Job Opportunities" Association="Self.FK_JobResume_Job Opportunities">
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+            <End Role="JobResume" EntitySet="JobResume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResume_Resume" Association="Self.FK_JobResume_Resume">
+            <End Role="Resume" EntitySet="Resume" />
+            <End Role="JobResume" EntitySet="JobResume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResume_Status" Association="Self.FK_JobResume_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="JobResume" EntitySet="JobResume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobSkill_Job Opportunities" Association="Self.FK_JobSkill_Job Opportunities">
+            <End Role="Job Opportunities" EntitySet="Job Opportunities" />
+            <End Role="JobSkill" EntitySet="JobSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobSkill_Skill" Association="Self.FK_JobSkill_Skill">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="JobSkill" EntitySet="JobSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Image" Association="Self.FK_Member_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberStatus_Member" Association="Self.FK_MemberStatus_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MemberStatus" EntitySet="MemberStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberStatus_Status" Association="Self.FK_MemberStatus_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="MemberStatus" EntitySet="MemberStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTag_Member" Association="Self.FK_MemberTag_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="MemberTag" EntitySet="MemberTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTag_SubTag" Association="Self.FK_MemberTag_SubTag">
+            <End Role="SubTag" EntitySet="SubTag" />
+            <End Role="MemberTag" EntitySet="MemberTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTag_Tag" Association="Self.FK_MemberTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="MemberTag" EntitySet="MemberTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Firm" Association="Self.FK_Order_Firm">
+            <End Role="Firm" EntitySet="Firm" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Member" Association="Self.FK_Order_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="Self.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_RegionDistrict" Association="Self.FK_Order_RegionDistrict">
+            <End Role="RegionDistrict" EntitySet="RegionDistrict" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ShipMethod" Association="Self.FK_Order_ShipMethod">
+            <End Role="ShipMethod" EntitySet="ShipMethod" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Image" Association="Self.FK_Product_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Member" Association="Self.FK_Product_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Status" Association="Self.FK_Product_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAction_Product" Association="Self.FK_ProductAction_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductTag" EntitySet="ProductTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAction_SubTag" Association="Self.FK_ProductAction_SubTag">
+            <End Role="SubTag" EntitySet="SubTag" />
+            <End Role="ProductTag" EntitySet="ProductTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAdvertise_AD" Association="Self.FK_ProductAdvertise_AD">
+            <End Role="Advertise" EntitySet="Advertise" />
+            <End Role="ProductAdvertise" EntitySet="ProductAdvertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAdvertise_Product" Association="Self.FK_ProductAdvertise_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductAdvertise" EntitySet="ProductAdvertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductEvaluate_Member" Association="Self.FK_ProductEvaluate_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="ProductEvaluate" EntitySet="ProductEvaluate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductEvaluate_Product" Association="Self.FK_ProductEvaluate_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductEvaluate" EntitySet="ProductEvaluate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegionDistrict_Region" Association="Self.FK_RegionDistrict_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="RegionDistrict" EntitySet="RegionDistrict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Article" Association="Self.FK_Reply_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Member" Association="Self.FK_Reply_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Reply" EntitySet="Reply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Education" Association="Self.FK_Resume_Education">
+            <End Role="Education" EntitySet="Education" />
+            <End Role="Resume" EntitySet="Resume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Image" Association="Self.FK_Resume_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Resume" EntitySet="Resume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Member" Association="Self.FK_Resume_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Resume" EntitySet="Resume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_ResumeStyle" Association="Self.FK_Resume_ResumeStyle">
+            <End Role="ResumeStyle" EntitySet="ResumeStyle" />
+            <End Role="Resume" EntitySet="Resume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Status" Association="Self.FK_Resume_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Resume" EntitySet="Resume" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeCertificate_Certificate" Association="Self.FK_ResumeCertificate_Certificate">
+            <End Role="Certificate" EntitySet="Certificate" />
+            <End Role="ResumeCertificate" EntitySet="ResumeCertificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeCertificate_Resume" Association="Self.FK_ResumeCertificate_Resume">
+            <End Role="Resume" EntitySet="Resume" />
+            <End Role="ResumeCertificate" EntitySet="ResumeCertificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSkill_Resume" Association="Self.FK_ResumeSkill_Resume">
+            <End Role="Resume" EntitySet="Resume" />
+            <End Role="ResumeSkill" EntitySet="ResumeSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSkill_Skill" Association="Self.FK_ResumeSkill_Skill">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="ResumeSkill" EntitySet="ResumeSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skill_SkillClass" Association="Self.FK_Skill_SkillClass">
+            <End Role="SkillClass" EntitySet="SkillClass" />
+            <End Role="Skill" EntitySet="Skill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubBlog_Blog" Association="Self.FK_SubBlog_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="SubBlog" EntitySet="SubBlog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubTag_Tag" Association="Self.FK_SubTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="SubTag" EntitySet="SubTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Member" Association="Self.FK_WishList_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Product" Association="Self.FK_WishList_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_GamingFormModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ArticleActions" Relationship="Self.FK_ArticleAction_Action" FromRole="Action" ToRole="ArticleAction" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdminPassword" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RankID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AdminRank" Relationship="Self.FK_Admin_AdminRank" FromRole="Admin" ToRole="AdminRank" />
+        </EntityType>
+        <EntityType Name="AdminRank">
+          <Key>
+            <PropertyRef Name="RankID" />
+          </Key>
+          <Property Name="RankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RK_Product" Type="Boolean" Nullable="false" />
+          <Property Name="RK_Member" Type="Boolean" Nullable="false" />
+          <Property Name="RK_Blog" Type="Boolean" Nullable="false" />
+          <Property Name="RK_Firm" Type="Boolean" Nullable="false" />
+          <Property Name="RK_Order" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_AdminRank" FromRole="AdminRank" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="AdvertiseID" />
+          </Key>
+          <Property Name="AdvertiseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_AD_Status" FromRole="Advertise" ToRole="Status" />
+          <NavigationProperty Name="JobAdvertises" Relationship="Self.FK_JobAdvertise_AD" FromRole="Advertise" ToRole="JobAdvertise" />
+          <NavigationProperty Name="ProductAdvertises" Relationship="Self.FK_ProductAdvertise_AD" FromRole="Advertise" ToRole="ProductAdvertise" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubBlogID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Article_Member" FromRole="Article" ToRole="Member" />
+          <NavigationProperty Name="SubBlog" Relationship="Self.FK_Article_SubBlog" FromRole="Article" ToRole="SubBlog" />
+          <NavigationProperty Name="ArticleActions" Relationship="Self.FK_ArticleAction_Article" FromRole="Article" ToRole="ArticleAction" />
+          <NavigationProperty Name="Replies" Relationship="Self.FK_Reply_Article" FromRole="Article" ToRole="Reply" />
+        </EntityType>
+        <EntityType Name="ArticleAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="ActionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Action" Relationship="Self.FK_ArticleAction_Action" FromRole="ArticleAction" ToRole="Action" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_ArticleAction_Article" FromRole="ArticleAction" ToRole="Article" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_ArticleAction_Member" FromRole="ArticleAction" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubTagID" Type="Int32" Nullable="false" />
+          <Property Name="ImageID" Type="Int32" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Blog_Image" FromRole="Blog" ToRole="Image" />
+          <NavigationProperty Name="SubTag" Relationship="Self.FK_Blog_SubTag" FromRole="Blog" ToRole="SubTag" />
+          <NavigationProperty Name="SubBlogs" Relationship="Self.FK_SubBlog_Blog" FromRole="Blog" ToRole="SubBlog" />
+        </EntityType>
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="CertificateID" />
+          </Key>
+          <Property Name="CertificateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="JobCertificates" Relationship="Self.FK_JobCertificate_Certificate" FromRole="Certificate" ToRole="JobCertificate" />
+          <NavigationProperty Name="ResumeCertificates" Relationship="Self.FK_ResumeCertificate_Certificate" FromRole="Certificate" ToRole="ResumeCertificate" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="EDID" />
+          </Key>
+          <Property Name="EDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_Job_Opportunities_Education" FromRole="Education" ToRole="Job_Opportunities" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_Resume_Education" FromRole="Education" ToRole="Resume" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="FirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaxID" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirmAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirmScale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirmIntro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="ImageID" Type="Int32" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Firm_Image" FromRole="Firm" ToRole="Image" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Firm_Status" FromRole="Firm" ToRole="Status" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_Job_Opportunities_Firm" FromRole="Firm" ToRole="Job_Opportunities" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Firm" FromRole="Firm" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_Image" FromRole="Image" ToRole="Blog" />
+          <NavigationProperty Name="Firms" Relationship="Self.FK_Firm_Image" FromRole="Image" ToRole="Firm" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Member_Image" FromRole="Image" ToRole="Member" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Image" FromRole="Image" ToRole="Product" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_Resume_Image" FromRole="Image" ToRole="Resume" />
+        </EntityType>
+        <EntityType Name="Job_Opportunity">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirmID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" Nullable="false" />
+          <Property Name="RequiredNum" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobExp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobStatusID" Type="Int32" Nullable="false" />
+          <Property Name="EDID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Education" Relationship="Self.FK_Job_Opportunities_Education" FromRole="Job_Opportunities" ToRole="Education" />
+          <NavigationProperty Name="Firm" Relationship="Self.FK_Job_Opportunities_Firm" FromRole="Job_Opportunities" ToRole="Firm" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Job_Opportunities_Region1" FromRole="Job_Opportunities" ToRole="Region" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Job_Opportunities_Status1" FromRole="Job_Opportunities" ToRole="Status" />
+          <NavigationProperty Name="JobAdvertises" Relationship="Self.FK_JobAdvertise_Job_Opportunities" FromRole="Job_Opportunities" ToRole="JobAdvertise" />
+          <NavigationProperty Name="JobCertificates" Relationship="Self.FK_JobCertificate_Job_Opportunities" FromRole="Job_Opportunities" ToRole="JobCertificate" />
+          <NavigationProperty Name="JobResumes" Relationship="Self.FK_JobResume_Job_Opportunities" FromRole="Job_Opportunities" ToRole="JobResume" />
+          <NavigationProperty Name="JobSkills" Relationship="Self.FK_JobSkill_Job_Opportunities" FromRole="Job_Opportunities" ToRole="JobSkill" />
+        </EntityType>
+        <EntityType Name="JobAdvertise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="AdvertiseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Advertise" Relationship="Self.FK_JobAdvertise_AD" FromRole="JobAdvertise" ToRole="Advertise" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_JobAdvertise_Job_Opportunities" FromRole="JobAdvertise" ToRole="Job_Opportunities" />
+        </EntityType>
+        <EntityType Name="JobCertificate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificateID" Type="Int32" Nullable="false" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Certificate" Relationship="Self.FK_JobCertificate_Certificate" FromRole="JobCertificate" ToRole="Certificate" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_JobCertificate_Job_Opportunities" FromRole="JobCertificate" ToRole="Job_Opportunities" />
+        </EntityType>
+        <EntityType Name="JobResume">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="ResumeID" Type="Int32" Nullable="false" />
+          <Property Name="ApplyStatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_JobResume_Job_Opportunities" FromRole="JobResume" ToRole="Job_Opportunities" />
+          <NavigationProperty Name="Resume" Relationship="Self.FK_JobResume_Resume" FromRole="JobResume" ToRole="Resume" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_JobResume_Status" FromRole="JobResume" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="JobSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillID" Type="Int32" Nullable="false" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_JobSkill_Job_Opportunities" FromRole="JobSkill" ToRole="Job_Opportunities" />
+          <NavigationProperty Name="Skill" Relationship="Self.FK_JobSkill_Skill" FromRole="JobSkill" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImageID" Type="Int32" Nullable="false" />
+          <Property Name="Mycomment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BonusPoint" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Article_Member" FromRole="Member" ToRole="Article" />
+          <NavigationProperty Name="ArticleActions" Relationship="Self.FK_ArticleAction_Member" FromRole="Member" ToRole="ArticleAction" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Member_Image" FromRole="Member" ToRole="Image" />
+          <NavigationProperty Name="MemberStatus" Relationship="Self.FK_MemberStatus_Member" FromRole="Member" ToRole="MemberStatus" />
+          <NavigationProperty Name="MemberTags" Relationship="Self.FK_MemberTag_Member" FromRole="Member" ToRole="MemberTag" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Member" FromRole="Member" ToRole="Order" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Member" FromRole="Member" ToRole="Product" />
+          <NavigationProperty Name="ProductEvaluates" Relationship="Self.FK_ProductEvaluate_Member" FromRole="Member" ToRole="ProductEvaluate" />
+          <NavigationProperty Name="Replies" Relationship="Self.FK_Reply_Member" FromRole="Member" ToRole="Reply" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_Resume_Member" FromRole="Member" ToRole="Resume" />
+          <NavigationProperty Name="WishLists" Relationship="Self.FK_WishList_Member" FromRole="Member" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="MemberStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemeberID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_MemberStatus_Member" FromRole="MemberStatus" ToRole="Member" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_MemberStatus_Status" FromRole="MemberStatus" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="MemberTag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="TagID" Type="Int32" />
+          <Property Name="SubTagID" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_MemberTag_Member" FromRole="MemberTag" ToRole="Member" />
+          <NavigationProperty Name="SubTag" Relationship="Self.FK_MemberTag_SubTag" FromRole="MemberTag" ToRole="SubTag" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_MemberTag_Tag" FromRole="MemberTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="FirmID" Type="Int32" />
+          <Property Name="ShipName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="ShippingDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentID" Type="Int32" Nullable="false" />
+          <Property Name="ShipID" Type="Int32" Nullable="false" />
+          <Property Name="Zipcode" Type="Int32" />
+          <Property Name="ShipAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Firm" Relationship="Self.FK_Order_Firm" FromRole="Order" ToRole="Firm" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Order_Member" FromRole="Order" ToRole="Member" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="RegionDistrict" Relationship="Self.FK_Order_RegionDistrict" FromRole="Order" ToRole="RegionDistrict" />
+          <NavigationProperty Name="ShipMethod" Relationship="Self.FK_Order_ShipMethod" FromRole="Order" ToRole="ShipMethod" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Order_Status" FromRole="Order" ToRole="Status" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProduct_Order" FromRole="Order" ToRole="OrderProduct" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Quantinty" Type="Int32" Nullable="false" />
+          <Property Name="Disconut" Type="Single" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Payment" FromRole="Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="AvailableDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProductContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitStock" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="FirmID" Type="Int32" />
+          <Property Name="ImageID" Type="Int32" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Product_Image" FromRole="Product" ToRole="Image" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Product_Member" FromRole="Product" ToRole="Member" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Product_Status" FromRole="Product" ToRole="Status" />
+          <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductAction_Product" FromRole="Product" ToRole="ProductTag" />
+          <NavigationProperty Name="ProductAdvertises" Relationship="Self.FK_ProductAdvertise_Product" FromRole="Product" ToRole="ProductAdvertise" />
+          <NavigationProperty Name="ProductEvaluates" Relationship="Self.FK_ProductEvaluate_Product" FromRole="Product" ToRole="ProductEvaluate" />
+          <NavigationProperty Name="WishLists" Relationship="Self.FK_WishList_Product" FromRole="Product" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="ProductAdvertise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="AdvertiseID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Advertise" Relationship="Self.FK_ProductAdvertise_AD" FromRole="ProductAdvertise" ToRole="Advertise" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductAdvertise_Product" FromRole="ProductAdvertise" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductEvaluate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="EvaLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EvaContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_ProductEvaluate_Member" FromRole="ProductEvaluate" ToRole="Member" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductEvaluate_Product" FromRole="ProductEvaluate" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductTag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="SubTagID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductAction_Product" FromRole="ProductTag" ToRole="Product" />
+          <NavigationProperty Name="SubTag" Relationship="Self.FK_ProductAction_SubTag" FromRole="ProductTag" ToRole="SubTag" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="RegionID" />
+          </Key>
+          <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_Job_Opportunities_Region1" FromRole="Region" ToRole="Job_Opportunities" />
+          <NavigationProperty Name="RegionDistricts" Relationship="Self.FK_RegionDistrict_Region" FromRole="Region" ToRole="RegionDistrict" />
+        </EntityType>
+        <EntityType Name="RegionDistrict">
+          <Key>
+            <PropertyRef Name="Zipcode" />
+          </Key>
+          <Property Name="Zipcode" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" Nullable="false" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_RegionDistrict" FromRole="RegionDistrict" ToRole="Order" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_RegionDistrict_Region" FromRole="RegionDistrict" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="ReplyID" />
+          </Key>
+          <Property Name="ReplyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int32" Nullable="false" />
+          <Property Name="ReplyContents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Reply_Article" FromRole="Reply" ToRole="Article" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Reply_Member" FromRole="Reply" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="ReplyAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="ReplyID" Type="Int32" Nullable="false" />
+          <Property Name="ActionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReplyImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ReplyID" Type="Int32" Nullable="false" />
+          <Property Name="ImageID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Resume">
+          <Key>
+            <PropertyRef Name="ResumeID" />
+          </Key>
+          <Property Name="ResumeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResumeContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WorkExp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormID" Type="Int32" Nullable="false" />
+          <Property Name="ResumeStatusID" Type="Int32" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="EDID" Type="Int32" />
+          <NavigationProperty Name="Education" Relationship="Self.FK_Resume_Education" FromRole="Resume" ToRole="Education" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_Resume_Image" FromRole="Resume" ToRole="Image" />
+          <NavigationProperty Name="JobResumes" Relationship="Self.FK_JobResume_Resume" FromRole="Resume" ToRole="JobResume" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Resume_Member" FromRole="Resume" ToRole="Member" />
+          <NavigationProperty Name="ResumeStyle" Relationship="Self.FK_Resume_ResumeStyle" FromRole="Resume" ToRole="ResumeStyle" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Resume_Status" FromRole="Resume" ToRole="Status" />
+          <NavigationProperty Name="ResumeCertificates" Relationship="Self.FK_ResumeCertificate_Resume" FromRole="Resume" ToRole="ResumeCertificate" />
+          <NavigationProperty Name="ResumeSkills" Relationship="Self.FK_ResumeSkill_Resume" FromRole="Resume" ToRole="ResumeSkill" />
+        </EntityType>
+        <EntityType Name="ResumeCertificate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResumeID" Type="Int32" Nullable="false" />
+          <Property Name="CertificateID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Certificate" Relationship="Self.FK_ResumeCertificate_Certificate" FromRole="ResumeCertificate" ToRole="Certificate" />
+          <NavigationProperty Name="Resume" Relationship="Self.FK_ResumeCertificate_Resume" FromRole="ResumeCertificate" ToRole="Resume" />
+        </EntityType>
+        <EntityType Name="ResumeSkill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResumeID" Type="Int32" Nullable="false" />
+          <Property Name="SkillID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Resume" Relationship="Self.FK_ResumeSkill_Resume" FromRole="ResumeSkill" ToRole="Resume" />
+          <NavigationProperty Name="Skill" Relationship="Self.FK_ResumeSkill_Skill" FromRole="ResumeSkill" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="ResumeStyle">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_Resume_ResumeStyle" FromRole="ResumeStyle" ToRole="Resume" />
+        </EntityType>
+        <EntityType Name="SerachRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDays" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsMember" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShipMethod">
+          <Key>
+            <PropertyRef Name="ShipID" />
+          </Key>
+          <Property Name="ShipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_ShipMethod" FromRole="ShipMethod" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillClassID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="JobSkills" Relationship="Self.FK_JobSkill_Skill" FromRole="Skill" ToRole="JobSkill" />
+          <NavigationProperty Name="ResumeSkills" Relationship="Self.FK_ResumeSkill_Skill" FromRole="Skill" ToRole="ResumeSkill" />
+          <NavigationProperty Name="SkillClass" Relationship="Self.FK_Skill_SkillClass" FromRole="Skill" ToRole="SkillClass" />
+        </EntityType>
+        <EntityType Name="SkillClass">
+          <Key>
+            <PropertyRef Name="SkillClassID" />
+          </Key>
+          <Property Name="SkillClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Skills" Relationship="Self.FK_Skill_SkillClass" FromRole="SkillClass" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Advertises" Relationship="Self.FK_AD_Status" FromRole="Status" ToRole="Advertise" />
+          <NavigationProperty Name="Firms" Relationship="Self.FK_Firm_Status" FromRole="Status" ToRole="Firm" />
+          <NavigationProperty Name="Job_Opportunities" Relationship="Self.FK_Job_Opportunities_Status1" FromRole="Status" ToRole="Job_Opportunities" />
+          <NavigationProperty Name="JobResumes" Relationship="Self.FK_JobResume_Status" FromRole="Status" ToRole="JobResume" />
+          <NavigationProperty Name="MemberStatus" Relationship="Self.FK_MemberStatus_Status" FromRole="Status" ToRole="MemberStatus" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Status" FromRole="Status" ToRole="Order" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Status" FromRole="Status" ToRole="Product" />
+          <NavigationProperty Name="Resumes" Relationship="Self.FK_Resume_Status" FromRole="Status" ToRole="Resume" />
+        </EntityType>
+        <EntityType Name="SubBlog">
+          <Key>
+            <PropertyRef Name="SubBlogID" />
+          </Key>
+          <Property Name="SubBlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogID" Type="Int32" Nullable="false" />
+          <Property Name="ParentBlogID" Type="Int32" />
+          <Property Name="IsMemberBlog" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Article_SubBlog" FromRole="SubBlog" ToRole="Article" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_SubBlog_Blog" FromRole="SubBlog" ToRole="Blog" />
+        </EntityType>
+        <EntityType Name="SubBolgCategory">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubBlogID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubTag">
+          <Key>
+            <PropertyRef Name="SubTagID" />
+          </Key>
+          <Property Name="SubTagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_SubTag" FromRole="SubTag" ToRole="Blog" />
+          <NavigationProperty Name="MemberTags" Relationship="Self.FK_MemberTag_SubTag" FromRole="SubTag" ToRole="MemberTag" />
+          <NavigationProperty Name="ProductTags" Relationship="Self.FK_ProductAction_SubTag" FromRole="SubTag" ToRole="ProductTag" />
+          <NavigationProperty Name="Tag" Relationship="Self.FK_SubTag_Tag" FromRole="SubTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="TagID" />
+          </Key>
+          <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MemberTags" Relationship="Self.FK_MemberTag_Tag" FromRole="Tag" ToRole="MemberTag" />
+          <NavigationProperty Name="SubTags" Relationship="Self.FK_SubTag_Tag" FromRole="Tag" ToRole="SubTag" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_WishList_Member" FromRole="WishList" ToRole="Member" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_WishList_Product" FromRole="WishList" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_ArticleAction_Action">
+          <End Role="Action" Type="Self.Action" Multiplicity="1" />
+          <End Role="ArticleAction" Type="Self.ArticleAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Action">
+              <PropertyRef Name="ActionID" />
+            </Principal>
+            <Dependent Role="ArticleAction">
+              <PropertyRef Name="ActionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admin_AdminRank">
+          <End Role="AdminRank" Type="Self.AdminRank" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRank">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AD_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Advertise">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobAdvertise_AD">
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="1" />
+          <End Role="JobAdvertise" Type="Self.JobAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Principal>
+            <Dependent Role="JobAdvertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAdvertise_AD">
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="1" />
+          <End Role="ProductAdvertise" Type="Self.ProductAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Advertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Principal>
+            <Dependent Role="ProductAdvertise">
+              <PropertyRef Name="AdvertiseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_SubBlog">
+          <End Role="SubBlog" Type="Self.SubBlog" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubBlog">
+              <PropertyRef Name="SubBlogID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="SubBlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAction_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleAction" Type="Self.ArticleAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="ArticleAction">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleAction_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="ArticleAction" Type="Self.ArticleAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ArticleAction">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_SubTag">
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTag">
+              <PropertyRef Name="SubTagID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="SubTagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubBlog_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="SubBlog" Type="Self.SubBlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="SubBlog">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobCertificate_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="JobCertificate" Type="Self.JobCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="CertificateID" />
+            </Principal>
+            <Dependent Role="JobCertificate">
+              <PropertyRef Name="CertificateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeCertificate_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="ResumeCertificate" Type="Self.ResumeCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="CertificateID" />
+            </Principal>
+            <Dependent Role="ResumeCertificate">
+              <PropertyRef Name="CertificateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Opportunities_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="1" />
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="EDID" />
+            </Principal>
+            <Dependent Role="Job_Opportunities">
+              <PropertyRef Name="EDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Education">
+          <End Role="Education" Type="Self.Education" Multiplicity="0..1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education">
+              <PropertyRef Name="EDID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="EDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Firm_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Firm" Type="Self.Firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Firm">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Firm_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Firm" Type="Self.Firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Firm">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Opportunities_Firm">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="1" />
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="Job_Opportunities">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Firm">
+          <End Role="Firm" Type="Self.Firm" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firm">
+              <PropertyRef Name="FirmID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FirmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="Member" Type="Self.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Opportunities_Region1">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="Job_Opportunities">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Opportunities_Status1">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Job_Opportunities">
+              <PropertyRef Name="JobStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobAdvertise_Job_Opportunities">
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="1" />
+          <End Role="JobAdvertise" Type="Self.JobAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job_Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobAdvertise">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobCertificate_Job_Opportunities">
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="1" />
+          <End Role="JobCertificate" Type="Self.JobCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job_Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobCertificate">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResume_Job_Opportunities">
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="1" />
+          <End Role="JobResume" Type="Self.JobResume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job_Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobResume">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobSkill_Job_Opportunities">
+          <End Role="Job_Opportunities" Type="Self.Job_Opportunity" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job_Opportunities">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResume_Resume">
+          <End Role="Resume" Type="Self.Resume" Multiplicity="1" />
+          <End Role="JobResume" Type="Self.JobResume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeID" />
+            </Principal>
+            <Dependent Role="JobResume">
+              <PropertyRef Name="ResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResume_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="JobResume" Type="Self.JobResume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="JobResume">
+              <PropertyRef Name="ApplyStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobSkill_Skill">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="SkillID" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberStatus_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MemberStatus" Type="Self.MemberStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberStatus">
+              <PropertyRef Name="MemeberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTag_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="MemberTag" Type="Self.MemberTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberTag">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductEvaluate_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="ProductEvaluate" Type="Self.ProductEvaluate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="ProductEvaluate">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Member">
+          <End Role="Member" Type="Self.Member" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberStatus_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="MemberStatus" Type="Self.MemberStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="MemberStatus">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTag_SubTag">
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="0..1" />
+          <End Role="MemberTag" Type="Self.MemberTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTag">
+              <PropertyRef Name="SubTagID" />
+            </Principal>
+            <Dependent Role="MemberTag">
+              <PropertyRef Name="SubTagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="0..1" />
+          <End Role="MemberTag" Type="Self.MemberTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="MemberTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_RegionDistrict">
+          <End Role="RegionDistrict" Type="Self.RegionDistrict" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionDistrict">
+              <PropertyRef Name="Zipcode" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Zipcode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ShipMethod">
+          <End Role="ShipMethod" Type="Self.ShipMethod" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShipMethod">
+              <PropertyRef Name="ShipID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAction_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductTag">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAdvertise_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductAdvertise" Type="Self.ProductAdvertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductAdvertise">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductEvaluate_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductEvaluate" Type="Self.ProductEvaluate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductEvaluate">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAction_SubTag">
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="1" />
+          <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubTag">
+              <PropertyRef Name="SubTagID" />
+            </Principal>
+            <Dependent Role="ProductTag">
+              <PropertyRef Name="SubTagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegionDistrict_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="RegionDistrict" Type="Self.RegionDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="RegionID" />
+            </Principal>
+            <Dependent Role="RegionDistrict">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_ResumeStyle">
+          <End Role="ResumeStyle" Type="Self.ResumeStyle" Multiplicity="1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResumeStyle">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="FormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resume_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Resume" Type="Self.Resume" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Resume">
+              <PropertyRef Name="ResumeStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeCertificate_Resume">
+          <End Role="Resume" Type="Self.Resume" Multiplicity="1" />
+          <End Role="ResumeCertificate" Type="Self.ResumeCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeID" />
+            </Principal>
+            <Dependent Role="ResumeCertificate">
+              <PropertyRef Name="ResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSkill_Resume">
+          <End Role="Resume" Type="Self.Resume" Multiplicity="1" />
+          <End Role="ResumeSkill" Type="Self.ResumeSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resume">
+              <PropertyRef Name="ResumeID" />
+            </Principal>
+            <Dependent Role="ResumeSkill">
+              <PropertyRef Name="ResumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSkill_Skill">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="ResumeSkill" Type="Self.ResumeSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="SkillID" />
+            </Principal>
+            <Dependent Role="ResumeSkill">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skill_SkillClass">
+          <End Role="SkillClass" Type="Self.SkillClass" Multiplicity="1" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillClass">
+              <PropertyRef Name="SkillClassID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="SkillClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubTag_Tag">
+          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+          <End Role="SubTag" Type="Self.SubTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="TagID" />
+            </Principal>
+            <Dependent Role="SubTag">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_GamingFormEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actions" EntityType="Self.Action" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="AdminRanks" EntityType="Self.AdminRank" />
+          <EntitySet Name="Advertises" EntityType="Self.Advertise" />
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="ArticleActions" EntityType="Self.ArticleAction" />
+          <EntitySet Name="Blogs" EntityType="Self.Blog" />
+          <EntitySet Name="Certificates" EntityType="Self.Certificate" />
+          <EntitySet Name="Educations" EntityType="Self.Education" />
+          <EntitySet Name="Firms" EntityType="Self.Firm" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Job_Opportunities" EntityType="Self.Job_Opportunity" />
+          <EntitySet Name="JobAdvertises" EntityType="Self.JobAdvertise" />
+          <EntitySet Name="JobCertificates" EntityType="Self.JobCertificate" />
+          <EntitySet Name="JobResumes" EntityType="Self.JobResume" />
+          <EntitySet Name="JobSkills" EntityType="Self.JobSkill" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="MemberStatus" EntityType="Self.MemberStatu" />
+          <EntitySet Name="MemberTags" EntityType="Self.MemberTag" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductAdvertises" EntityType="Self.ProductAdvertise" />
+          <EntitySet Name="ProductEvaluates" EntityType="Self.ProductEvaluate" />
+          <EntitySet Name="ProductTags" EntityType="Self.ProductTag" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="RegionDistricts" EntityType="Self.RegionDistrict" />
+          <EntitySet Name="Replies" EntityType="Self.Reply" />
+          <EntitySet Name="ReplyActions" EntityType="Self.ReplyAction" />
+          <EntitySet Name="ReplyImages" EntityType="Self.ReplyImage" />
+          <EntitySet Name="Resumes" EntityType="Self.Resume" />
+          <EntitySet Name="ResumeCertificates" EntityType="Self.ResumeCertificate" />
+          <EntitySet Name="ResumeSkills" EntityType="Self.ResumeSkill" />
+          <EntitySet Name="ResumeStyles" EntityType="Self.ResumeStyle" />
+          <EntitySet Name="SerachRecords" EntityType="Self.SerachRecord" />
+          <EntitySet Name="ShipMethods" EntityType="Self.ShipMethod" />
+          <EntitySet Name="Skills" EntityType="Self.Skill" />
+          <EntitySet Name="SkillClasses" EntityType="Self.SkillClass" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="SubBlogs" EntityType="Self.SubBlog" />
+          <EntitySet Name="SubBolgCategories" EntityType="Self.SubBolgCategory" />
+          <EntitySet Name="SubTags" EntityType="Self.SubTag" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="WishLists" EntityType="Self.WishList" />
+          <AssociationSet Name="FK_ArticleAction_Action" Association="Self.FK_ArticleAction_Action">
+            <End Role="Action" EntitySet="Actions" />
+            <End Role="ArticleAction" EntitySet="ArticleActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admin_AdminRank" Association="Self.FK_Admin_AdminRank">
+            <End Role="AdminRank" EntitySet="AdminRanks" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AD_Status" Association="Self.FK_AD_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Advertise" EntitySet="Advertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobAdvertise_AD" Association="Self.FK_JobAdvertise_AD">
+            <End Role="Advertise" EntitySet="Advertises" />
+            <End Role="JobAdvertise" EntitySet="JobAdvertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAdvertise_AD" Association="Self.FK_ProductAdvertise_AD">
+            <End Role="Advertise" EntitySet="Advertises" />
+            <End Role="ProductAdvertise" EntitySet="ProductAdvertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Member" Association="Self.FK_Article_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_SubBlog" Association="Self.FK_Article_SubBlog">
+            <End Role="SubBlog" EntitySet="SubBlogs" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAction_Article" Association="Self.FK_ArticleAction_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleAction" EntitySet="ArticleActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Article" Association="Self.FK_Reply_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Reply" EntitySet="Replies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleAction_Member" Association="Self.FK_ArticleAction_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="ArticleAction" EntitySet="ArticleActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_Image" Association="Self.FK_Blog_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_SubTag" Association="Self.FK_Blog_SubTag">
+            <End Role="SubTag" EntitySet="SubTags" />
+            <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubBlog_Blog" Association="Self.FK_SubBlog_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="SubBlog" EntitySet="SubBlogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobCertificate_Certificate" Association="Self.FK_JobCertificate_Certificate">
+            <End Role="Certificate" EntitySet="Certificates" />
+            <End Role="JobCertificate" EntitySet="JobCertificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeCertificate_Certificate" Association="Self.FK_ResumeCertificate_Certificate">
+            <End Role="Certificate" EntitySet="Certificates" />
+            <End Role="ResumeCertificate" EntitySet="ResumeCertificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Opportunities_Education" Association="Self.FK_Job_Opportunities_Education">
+            <End Role="Education" EntitySet="Educations" />
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Education" Association="Self.FK_Resume_Education">
+            <End Role="Education" EntitySet="Educations" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Firm_Image" Association="Self.FK_Firm_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Firm" EntitySet="Firms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Firm_Status" Association="Self.FK_Firm_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Firm" EntitySet="Firms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Opportunities_Firm" Association="Self.FK_Job_Opportunities_Firm">
+            <End Role="Firm" EntitySet="Firms" />
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Firm" Association="Self.FK_Order_Firm">
+            <End Role="Firm" EntitySet="Firms" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Image" Association="Self.FK_Member_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Member" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Image" Association="Self.FK_Product_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Image" Association="Self.FK_Resume_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Opportunities_Region1" Association="Self.FK_Job_Opportunities_Region1">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Opportunities_Status1" Association="Self.FK_Job_Opportunities_Status1">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobAdvertise_Job_Opportunities" Association="Self.FK_JobAdvertise_Job_Opportunities">
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+            <End Role="JobAdvertise" EntitySet="JobAdvertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobCertificate_Job_Opportunities" Association="Self.FK_JobCertificate_Job_Opportunities">
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+            <End Role="JobCertificate" EntitySet="JobCertificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResume_Job_Opportunities" Association="Self.FK_JobResume_Job_Opportunities">
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+            <End Role="JobResume" EntitySet="JobResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobSkill_Job_Opportunities" Association="Self.FK_JobSkill_Job_Opportunities">
+            <End Role="Job_Opportunities" EntitySet="Job_Opportunities" />
+            <End Role="JobSkill" EntitySet="JobSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResume_Resume" Association="Self.FK_JobResume_Resume">
+            <End Role="Resume" EntitySet="Resumes" />
+            <End Role="JobResume" EntitySet="JobResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResume_Status" Association="Self.FK_JobResume_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="JobResume" EntitySet="JobResumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobSkill_Skill" Association="Self.FK_JobSkill_Skill">
+            <End Role="Skill" EntitySet="Skills" />
+            <End Role="JobSkill" EntitySet="JobSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberStatus_Member" Association="Self.FK_MemberStatus_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MemberStatus" EntitySet="MemberStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTag_Member" Association="Self.FK_MemberTag_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="MemberTag" EntitySet="MemberTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Member" Association="Self.FK_Order_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Member" Association="Self.FK_Product_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductEvaluate_Member" Association="Self.FK_ProductEvaluate_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="ProductEvaluate" EntitySet="ProductEvaluates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Member" Association="Self.FK_Reply_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Reply" EntitySet="Replies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Member" Association="Self.FK_Resume_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Member" Association="Self.FK_WishList_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberStatus_Status" Association="Self.FK_MemberStatus_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="MemberStatus" EntitySet="MemberStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTag_SubTag" Association="Self.FK_MemberTag_SubTag">
+            <End Role="SubTag" EntitySet="SubTags" />
+            <End Role="MemberTag" EntitySet="MemberTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberTag_Tag" Association="Self.FK_MemberTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="MemberTag" EntitySet="MemberTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="Self.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_RegionDistrict" Association="Self.FK_Order_RegionDistrict">
+            <End Role="RegionDistrict" EntitySet="RegionDistricts" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ShipMethod" Association="Self.FK_Order_ShipMethod">
+            <End Role="ShipMethod" EntitySet="ShipMethods" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Status" Association="Self.FK_Product_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAction_Product" Association="Self.FK_ProductAction_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductTag" EntitySet="ProductTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAdvertise_Product" Association="Self.FK_ProductAdvertise_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductAdvertise" EntitySet="ProductAdvertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductEvaluate_Product" Association="Self.FK_ProductEvaluate_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductEvaluate" EntitySet="ProductEvaluates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Product" Association="Self.FK_WishList_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAction_SubTag" Association="Self.FK_ProductAction_SubTag">
+            <End Role="SubTag" EntitySet="SubTags" />
+            <End Role="ProductTag" EntitySet="ProductTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegionDistrict_Region" Association="Self.FK_RegionDistrict_Region">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="RegionDistrict" EntitySet="RegionDistricts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_ResumeStyle" Association="Self.FK_Resume_ResumeStyle">
+            <End Role="ResumeStyle" EntitySet="ResumeStyles" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resume_Status" Association="Self.FK_Resume_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Resume" EntitySet="Resumes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeCertificate_Resume" Association="Self.FK_ResumeCertificate_Resume">
+            <End Role="Resume" EntitySet="Resumes" />
+            <End Role="ResumeCertificate" EntitySet="ResumeCertificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSkill_Resume" Association="Self.FK_ResumeSkill_Resume">
+            <End Role="Resume" EntitySet="Resumes" />
+            <End Role="ResumeSkill" EntitySet="ResumeSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSkill_Skill" Association="Self.FK_ResumeSkill_Skill">
+            <End Role="Skill" EntitySet="Skills" />
+            <End Role="ResumeSkill" EntitySet="ResumeSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skill_SkillClass" Association="Self.FK_Skill_SkillClass">
+            <End Role="SkillClass" EntitySet="SkillClasses" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubTag_Tag" Association="Self.FK_SubTag_Tag">
+            <End Role="Tag" EntitySet="Tags" />
+            <End Role="SubTag" EntitySet="SubTags" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_GamingFormModelStoreContainer" CdmEntityContainer="DB_GamingFormEntities">
+          <EntitySetMapping Name="Actions">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminAccount" ColumnName="AdminAccount" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminRanks">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.AdminRank">
+              <MappingFragment StoreEntitySet="AdminRank">
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="RK_Product" ColumnName="RK_Product" />
+                <ScalarProperty Name="RK_Member" ColumnName="RK_Member" />
+                <ScalarProperty Name="RK_Blog" ColumnName="RK_Blog" />
+                <ScalarProperty Name="RK_Firm" ColumnName="RK_Firm" />
+                <ScalarProperty Name="RK_Order" ColumnName="RK_Order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Advertises">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Advertise">
+              <MappingFragment StoreEntitySet="Advertise">
+                <ScalarProperty Name="AdvertiseID" ColumnName="AdvertiseID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AdContent" ColumnName="AdContent" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="SubBlogID" ColumnName="SubBlogID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleActions">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ArticleAction">
+              <MappingFragment StoreEntitySet="ArticleAction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SubTagID" ColumnName="SubTagID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certificates">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Certificate">
+              <MappingFragment StoreEntitySet="Certificate">
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="EDID" ColumnName="EDID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firms">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Firm">
+              <MappingFragment StoreEntitySet="Firm">
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirmAddress" ColumnName="FirmAddress" />
+                <ScalarProperty Name="FirmScale" ColumnName="FirmScale" />
+                <ScalarProperty Name="FirmIntro" ColumnName="FirmIntro" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image1" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job_Opportunities">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Job_Opportunity">
+              <MappingFragment StoreEntitySet="Job Opportunities">
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="RequiredNum" ColumnName="RequiredNum" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="JobExp" ColumnName="JobExp" />
+                <ScalarProperty Name="JobContent" ColumnName="JobContent" />
+                <ScalarProperty Name="JobStatusID" ColumnName="JobStatusID" />
+                <ScalarProperty Name="EDID" ColumnName="EDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobAdvertises">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.JobAdvertise">
+              <MappingFragment StoreEntitySet="JobAdvertise">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="AdvertiseID" ColumnName="AdvertiseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobCertificates">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.JobCertificate">
+              <MappingFragment StoreEntitySet="JobCertificate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobResumes">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.JobResume">
+              <MappingFragment StoreEntitySet="JobResume">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="ResumeID" ColumnName="ResumeID" />
+                <ScalarProperty Name="ApplyStatusID" ColumnName="ApplyStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobSkills">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.JobSkill">
+              <MappingFragment StoreEntitySet="JobSkill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Mycomment" ColumnName="Mycomment" />
+                <ScalarProperty Name="BonusPoint" ColumnName="BonusPoint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberStatus">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.MemberStatu">
+              <MappingFragment StoreEntitySet="MemberStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemeberID" ColumnName="MemeberID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberTags">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.MemberTag">
+              <MappingFragment StoreEntitySet="MemberTag">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="SubTagID" ColumnName="SubTagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="ShippingDate" ColumnName="ShippingDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProducts">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.OrderProduct">
+              <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantinty" ColumnName="Quantinty" />
+                <ScalarProperty Name="Disconut" ColumnName="Disconut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AvailableDate" ColumnName="AvailableDate" />
+                <ScalarProperty Name="ProductContent" ColumnName="ProductContent" />
+                <ScalarProperty Name="UnitStock" ColumnName="UnitStock" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductAdvertises">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ProductAdvertise">
+              <MappingFragment StoreEntitySet="ProductAdvertise">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="AdvertiseID" ColumnName="AdvertiseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductEvaluates">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ProductEvaluate">
+              <MappingFragment StoreEntitySet="ProductEvaluate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="EvaLevel" ColumnName="EvaLevel" />
+                <ScalarProperty Name="EvaContent" ColumnName="EvaContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTags">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ProductTag">
+              <MappingFragment StoreEntitySet="ProductTag">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="SubTagID" ColumnName="SubTagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionDistricts">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.RegionDistrict">
+              <MappingFragment StoreEntitySet="RegionDistrict">
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="District" ColumnName="District" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Replies">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Reply">
+              <MappingFragment StoreEntitySet="Reply">
+                <ScalarProperty Name="ReplyID" ColumnName="ReplyID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="ReplyContents" ColumnName="ReplyContents" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyActions">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ReplyAction">
+              <MappingFragment StoreEntitySet="ReplyAction">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ReplyID" ColumnName="ReplyID" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyImages">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ReplyImage">
+              <MappingFragment StoreEntitySet="ReplyImage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ReplyID" ColumnName="ReplyID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resumes">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Resume">
+              <MappingFragment StoreEntitySet="Resume">
+                <ScalarProperty Name="ResumeID" ColumnName="ResumeID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IdentityID" ColumnName="IdentityID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ResumeContent" ColumnName="ResumeContent" />
+                <ScalarProperty Name="WorkExp" ColumnName="WorkExp" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="ResumeStatusID" ColumnName="ResumeStatusID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="EDID" ColumnName="EDID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResumeCertificates">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ResumeCertificate">
+              <MappingFragment StoreEntitySet="ResumeCertificate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ResumeID" ColumnName="ResumeID" />
+                <ScalarProperty Name="CertificateID" ColumnName="CertificateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResumeSkills">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ResumeSkill">
+              <MappingFragment StoreEntitySet="ResumeSkill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ResumeID" ColumnName="ResumeID" />
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResumeStyles">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ResumeStyle">
+              <MappingFragment StoreEntitySet="ResumeStyle">
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SerachRecords">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.SerachRecord">
+              <MappingFragment StoreEntitySet="SerachRecord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateDays" ColumnName="CreateDays" />
+                <ScalarProperty Name="IsMember" ColumnName="IsMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShipMethods">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.ShipMethod">
+              <MappingFragment StoreEntitySet="ShipMethod">
+                <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Skill">
+              <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+                <ScalarProperty Name="SkillClassID" ColumnName="SkillClassID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkillClasses">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.SkillClass">
+              <MappingFragment StoreEntitySet="SkillClass">
+                <ScalarProperty Name="SkillClassID" ColumnName="SkillClassID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubBlogs">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.SubBlog">
+              <MappingFragment StoreEntitySet="SubBlog">
+                <ScalarProperty Name="SubBlogID" ColumnName="SubBlogID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="ParentBlogID" ColumnName="ParentBlogID" />
+                <ScalarProperty Name="IsMemberBlog" ColumnName="IsMemberBlog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubBolgCategories">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.SubBolgCategory">
+              <MappingFragment StoreEntitySet="SubBolgCategories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SubBlogID" ColumnName="SubBlogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubTags">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.SubTag">
+              <MappingFragment StoreEntitySet="SubTag">
+                <ScalarProperty Name="SubTagID" ColumnName="SubTagID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishLists">
+            <EntityTypeMapping TypeName="DB_GamingFormModel.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
