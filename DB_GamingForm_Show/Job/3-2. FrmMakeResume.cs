@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DB_GamingForm_Show;
+using DB_GamingForm_Show.Job;
 using Gaming_Forum;
 using Image = DB_GamingForm_Show.Image;
 
@@ -17,9 +18,7 @@ namespace Groot
     public partial class FrmMakeResume : Form
     {
         DB_GamingFormEntities db = new DB_GamingFormEntities();
-
-        string currentID;
-
+        
         ListBox llb = new ListBox();
 
         ListBox lb = new ListBox();
@@ -29,6 +28,8 @@ namespace Groot
         public FrmMakeResume()
         {
             InitializeComponent();
+            
+            CInfo n = new CInfo();
 
             Text = "會員";
 
@@ -44,25 +45,14 @@ namespace Groot
             LoadMySendResumes();
             LoadJobOffers();
 
-            confirmInvite();
+            n.ConfirmInvite();
 
-        }
-
-        private void confirmInvite()
-        {
-            var q = from p in this.db.JobResumes.AsEnumerable()
-                    where p.Resume.MemberID== int.Parse(currentID) && p.ApplyStatusID == 9
-                    select p;
-            if (q.Any())
-            {
-                MessageBox.Show($"您有{q.Count()}份面試邀請，祝您面試順利");
-            }
         }
 
         private void LoadID()
         {
-            currentID = ClassUtility.MemberID.ToString();
-            this.textBox6.Text = currentID;
+            CInfo.currentID = ClassUtility.MemberID.ToString();
+            this.textBox6.Text = CInfo.currentID;
         }
 
         private void LoadJobOffers()
@@ -100,7 +90,7 @@ namespace Groot
             //Todo MakeResumes純粹沒renew entities
             db = new DB_GamingFormEntities();
             var q = from p in this.db.JobResumes.AsEnumerable()
-                    where p.Resume.MemberID == int.Parse(currentID)
+                    where p.Resume.MemberID == int.Parse(CInfo.currentID)
                     select new
                     {
                         履歷編號 = p.ResumeID,
@@ -123,17 +113,17 @@ namespace Groot
         private void LoadEmail()
         {
             var q = from p in this.db.Members.AsEnumerable()
-                    where p.MemberID == int.Parse(currentID)
-                    select new { email = p.Email };
+                    where p.MemberID == int.Parse(CInfo.currentID)
+                    select p;
 
-            this.textBox8.Text = q.FirstOrDefault().email.ToString();
+            this.textBox8.Text = q.FirstOrDefault().Email.ToString();
         }
         private void LoadCreatePage()
         {
             var q = from p in this.db.Resumes.AsEnumerable()
-                    where p.MemberID == int.Parse(currentID)
+                    where p.MemberID == int.Parse(CInfo.currentID)
                     select p;
-            if (q.Any(n => n.MemberID == int.Parse(currentID)))
+            if (q.Any(n => n.MemberID == int.Parse(CInfo.currentID)))
             {
                 this.textBox3.Text = q.FirstOrDefault().FullName;
                 
@@ -145,33 +135,19 @@ namespace Groot
                 this.comboBox1.SelectedIndex = (int)(q.FirstOrDefault().EDID - 1);
                 //this.comboBox1.Text = q.FirstOrDefault().Education.Name;
 
-
                 this.textBox5.Text = q.FirstOrDefault().WorkExp;
             }
         }
 
-        
-
         private void LoadMyResumeDetials()
         {
-            var qq = (from p in this.db.Resumes.AsEnumerable()
-                      where p.ResumeID == int.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString())
-                      select new
-                      {
-                          履歷編號 = p.ResumeID,
-                          會員編號 = p.MemberID,
-                          狀態 = p.ResumeStatusID,
-                          身份證字號 = p.IdentityID,
-                          手機號碼 = p.PhoneNumber,
-                          教育程度編號 = p.EDID,
-                          工作經驗 = p.WorkExp,
-                          自我介紹 = p.ResumeContent,
-                          電子信箱 = p.Member.Email,
-                          大頭照 = p.Image.Image1
-                      }).FirstOrDefault();
+            CMyResumeDetial.resumeID = int.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
 
+            CInfo x = new CInfo();
+
+            x.LoadMyresume(CMyResumeDetial.resumeID);
             //=====================================
-
+            //教育程度下拉式選單選項載入
             var q = from p in this.db.Educations
                     select p.Name;
             this.comboBox2.Items.Clear();
@@ -180,10 +156,9 @@ namespace Groot
                 this.comboBox2.Items.Add(g.ToString());
             }
             //=====================================
-
-            this.textBox26.Text = qq.履歷編號.ToString();
-            this.textBox25.Text = qq.會員編號.ToString();
-            if (qq.狀態 == 1)
+            this.textBox26.Text = CMyResumeDetial.resumeID.ToString();//qq.履歷編號.ToString();
+            this.textBox25.Text = CMyResumeDetial.memberID.ToString();//qq.會員編號.ToString();
+            if (CMyResumeDetial.resumestateID == 1)
             {
                 checkBox4.Checked = true;
                 checkBox5.Checked = false;
@@ -193,13 +168,13 @@ namespace Groot
                 checkBox4.Checked = false;
                 checkBox5.Checked = true;
             }
-            this.textBox21.Text = qq.身份證字號;
-            this.textBox20.Text = qq.手機號碼;
-            this.comboBox2.SelectedIndex = (int)qq.教育程度編號-1;
-            this.textBox15.Text = qq.工作經驗;
-            this.textBox7.Text = qq.電子信箱;
-            this.richTextBox3.Text = qq.自我介紹;
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(qq.大頭照);
+            this.textBox21.Text = CMyResumeDetial.identityID;//qq.身份證字號;
+            this.textBox20.Text = CMyResumeDetial.phoneNumber;//qq.手機號碼;
+            this.comboBox2.SelectedIndex = CMyResumeDetial.edID - 1;//(int)qq.教育程度編號-1;
+            this.textBox15.Text = CMyResumeDetial.workExp;//qq.工作經驗;
+            this.textBox7.Text = CMyResumeDetial.email;//qq.電子信箱;
+            this.richTextBox3.Text = CMyResumeDetial.resumeContend;//qq.自我介紹;
+            System.IO.MemoryStream ms = new System.IO.MemoryStream(CMyResumeDetial.image);//(qq.大頭照);
             this.pictureBox3.Image = System.Drawing.Image.FromStream(ms);
         }
 
@@ -208,7 +183,7 @@ namespace Groot
             try
             {
                 var s = from p in this.db.Resumes.AsEnumerable()
-                        where p.MemberID == int.Parse(currentID)
+                        where p.MemberID == int.Parse(CInfo.currentID)
                         select p;
                 //判斷有無履歷，沒有則提示未建立履歷
                 if (s.Any())
@@ -218,7 +193,7 @@ namespace Groot
                     //==================================================
                     //datagridview
                     var q = from p in this.db.Resumes.AsEnumerable()
-                            where p.MemberID == int.Parse(currentID)
+                            where p.MemberID == int.Parse(CInfo.currentID)
                             select new
                             {
                                 履歷編號 = p.ResumeID,
@@ -263,7 +238,7 @@ namespace Groot
         private void LoadArticle()
         {
             var q = from p in db.Articles.AsEnumerable()
-                    where p.MemberID == int.Parse(currentID)
+                    where p.MemberID == int.Parse(CInfo.currentID)
                     select p;
             foreach (var item in q)
             {
@@ -321,26 +296,7 @@ namespace Groot
             remembertext = this.richTextBox1.Text;
         }
 
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedIndex += 1;
-        }
-
-        private void button7_Click_1(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedIndex += 1;
-        }
-
-        private void button9_Click_1(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedIndex -= 1;
-        }
-
-
-        private void button11_Click_1(object sender, EventArgs e)
-        {
-            this.tabControl1.SelectedIndex -= 1;
-        }
+       
 
         private void button12_Click_1(object sender, EventArgs e)
         {
@@ -385,7 +341,7 @@ namespace Groot
 
                 Resume f = new Resume
                 {
-                    MemberID = int.Parse(currentID),
+                    MemberID = int.Parse(CInfo.currentID),
                     FullName = this.textBox3.Text,
                     IdentityID = this.textBox1.Text,
                     PhoneNumber = this.textBox2.Text,
@@ -458,8 +414,6 @@ namespace Groot
             //{
             //    this.listBox3.Items.Add(j);
             //}
-
-
 
             this.listBox2.Items.Remove(this.listBox2.SelectedItem);
 

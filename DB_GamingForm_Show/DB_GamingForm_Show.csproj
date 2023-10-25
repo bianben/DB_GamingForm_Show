@@ -149,7 +149,10 @@
     <Compile Include="Job\4-2. FrmMakeJobRequire.designer.cs">
       <DependentUpon>4-2. FrmMakeJobRequire.cs</DependentUpon>
     </Compile>
+    <Compile Include="Job\CInfo.cs" />
     <Compile Include="Job\ClsJob.cs" />
+    <Compile Include="Job\CMyInfo.cs" />
+    <Compile Include="Job\CMyResumeDetial.cs" />
     <Compile Include="Job\FrmJobMainPage.cs">
       <SubType>Form</SubType>
     </Compile>
