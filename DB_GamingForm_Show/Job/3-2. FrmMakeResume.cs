@@ -23,18 +23,18 @@ namespace Groot
 
         ListBox lb = new ListBox();
 
+        CInfo n = new CInfo();
+
         private bool shouldSetCurrentCell = true;
 
         public FrmMakeResume()
         {
             InitializeComponent();
             
-            CInfo n = new CInfo();
-
             Text = "會員";
 
             LoadID();
-            LoadEmail();
+
             LoadSkills();
             LoadED();
             LoadArticle();
@@ -49,11 +49,7 @@ namespace Groot
 
         }
 
-        private void LoadID()
-        {
-            CInfo.currentID = ClassUtility.MemberID.ToString();
-            this.textBox6.Text = CInfo.currentID;
-        }
+        
 
         private void LoadJobOffers()
         {
@@ -62,7 +58,7 @@ namespace Groot
             f.HeaderText = "應徵";
             f.DefaultCellStyle.NullValue = "我要應徵";
 
-
+            
             var q = from p in this.db.Job_Opportunities.AsEnumerable()
                     select new
                     {
@@ -78,7 +74,6 @@ namespace Groot
                         更新日期 = p.ModifiedDate,
                     };
 
-
             this.dataGridView4.DataSource = q.ToList();
             this.dataGridView4.Columns.Add(f);
             
@@ -89,8 +84,9 @@ namespace Groot
         {
             //Todo MakeResumes純粹沒renew entities
             db = new DB_GamingFormEntities();
+            
             var q = from p in this.db.JobResumes.AsEnumerable()
-                    where p.Resume.MemberID == int.Parse(CInfo.currentID)
+                    where p.Resume.MemberID == int.Parse(CMyInfo.currentID)
                     select new
                     {
                         履歷編號 = p.ResumeID,
@@ -110,32 +106,36 @@ namespace Groot
 
         }
 
-        private void LoadEmail()
+        private void LoadID()
         {
-            var q = from p in this.db.Members.AsEnumerable()
-                    where p.MemberID == int.Parse(CInfo.currentID)
-                    select p;
+            //ID
+            CMyInfo.currentID = ClassUtility.MemberID.ToString();
+            this.textBox6.Text = CMyInfo.currentID;
 
-            this.textBox8.Text = q.FirstOrDefault().Email.ToString();
+            //EMAIL
+            this.textBox8.Text = CMyInfo.Email;
         }
+
         private void LoadCreatePage()
         {
+            n.LoadMyInfo(int.Parse(CMyInfo.currentID));
+
             var q = from p in this.db.Resumes.AsEnumerable()
-                    where p.MemberID == int.Parse(CInfo.currentID)
+                    where p.MemberID == int.Parse(CMyInfo.currentID)
                     select p;
-            if (q.Any(n => n.MemberID == int.Parse(CInfo.currentID)))
+            if (q.Any(n => n.MemberID == int.Parse(CMyInfo.currentID)))
             {
-                this.textBox3.Text = q.FirstOrDefault().FullName;
-                
-                this.textBox1.Text = q.FirstOrDefault().IdentityID;
-                
-                this.textBox2.Text = q.FirstOrDefault().PhoneNumber;
+                this.textBox3.Text = CMyInfo.Name;
+
+                this.textBox1.Text = CMyInfo.IdentityID;
+
+                this.textBox2.Text = CMyInfo.PhoneNumber;
 
                 //Todo MakeResumes(已解決)combox 用 index設定不到值 loaditems的程式碼要在前
-                this.comboBox1.SelectedIndex = (int)(q.FirstOrDefault().EDID - 1);
+                this.comboBox1.SelectedIndex = (int)(CMyInfo.EDID - 1);
                 //this.comboBox1.Text = q.FirstOrDefault().Education.Name;
 
-                this.textBox5.Text = q.FirstOrDefault().WorkExp;
+                this.textBox5.Text = CMyInfo.WorkExp;
             }
         }
 
@@ -183,7 +183,7 @@ namespace Groot
             try
             {
                 var s = from p in this.db.Resumes.AsEnumerable()
-                        where p.MemberID == int.Parse(CInfo.currentID)
+                        where p.MemberID == int.Parse(CMyInfo.currentID)
                         select p;
                 //判斷有無履歷，沒有則提示未建立履歷
                 if (s.Any())
@@ -193,7 +193,7 @@ namespace Groot
                     //==================================================
                     //datagridview
                     var q = from p in this.db.Resumes.AsEnumerable()
-                            where p.MemberID == int.Parse(CInfo.currentID)
+                            where p.MemberID == int.Parse(CMyInfo.currentID)
                             select new
                             {
                                 履歷編號 = p.ResumeID,
@@ -238,7 +238,7 @@ namespace Groot
         private void LoadArticle()
         {
             var q = from p in db.Articles.AsEnumerable()
-                    where p.MemberID == int.Parse(CInfo.currentID)
+                    where p.MemberID == int.Parse(CMyInfo.currentID)
                     select p;
             foreach (var item in q)
             {
@@ -278,7 +278,7 @@ namespace Groot
             this.button17.Enabled = false;
         }
 
-        //紀錄richtextbox1的內容，勾選文章時使用
+        //所選技能存入richtextbox1的內容，為勾選文章時重置使用
         string remembertext;
 
         private void button4_Click(object sender, EventArgs e)
@@ -293,7 +293,8 @@ namespace Groot
             {
                 this.richTextBox1.Text += $"{i + 1}.{this.listBox3.Items[i]}\r";
             }
-            remembertext = this.richTextBox1.Text;
+            CMyResumeDetial.resumeContend = this.richTextBox1.Text;
+            //remembertext = this.richTextBox1.Text;
         }
 
        
@@ -341,7 +342,7 @@ namespace Groot
 
                 Resume f = new Resume
                 {
-                    MemberID = int.Parse(CInfo.currentID),
+                    MemberID = int.Parse(CMyInfo.currentID),
                     FullName = this.textBox3.Text,
                     IdentityID = this.textBox1.Text,
                     PhoneNumber = this.textBox2.Text,
@@ -819,7 +820,8 @@ namespace Groot
                 {
                     this.richTextBox1.Text += $"{i + 1}.{this.listBox3.Items[i]}\r";
                 }
-                remembertext = this.richTextBox1.Text;
+                CMyResumeDetial.resumeContend = this.richTextBox1.Text;
+                //remembertext = this.richTextBox1.Text;
             }
         }
 
@@ -828,7 +830,8 @@ namespace Groot
         {
             if (this.checkedListBox1.CheckedItems.Count != 0)
             {
-                this.richTextBox1.Text = remembertext;
+                //this.richTextBox1.Text = remembertext;
+                this.richTextBox1.Text = CMyResumeDetial.resumeContend;
                 this.richTextBox1.Text += "\r我的創作：\r";
                 for (int i = 0; i < this.checkedListBox1.CheckedItems.Count; i++)
                 {
@@ -837,7 +840,8 @@ namespace Groot
             }
             else
             {
-                this.richTextBox1.Text = remembertext;
+                //this.richTextBox1.Text = remembertext;
+                this.richTextBox1.Text = CMyResumeDetial.resumeContend;
             }
         }
     }

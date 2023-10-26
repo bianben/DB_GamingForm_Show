@@ -13,26 +13,31 @@ namespace DB_GamingForm_Show.Job
 
         DB_GamingFormEntities db = new DB_GamingFormEntities();
 
-        public static string currentID { get; set; }
 
         public void ConfirmInvite()
         {
             var q = from p in db.JobResumes.AsEnumerable()
-                    where p.Resume.MemberID == int.Parse(CInfo.currentID) && p.ApplyStatusID == 9
+                    where p.Resume.MemberID == int.Parse(CMyInfo.currentID) && p.ApplyStatusID == 9
                     select p;
             if (q.Any())
             {
                 MessageBox.Show($"您有{q.Count()}份面試邀請，祝您面試順利");
             }
         }
+
         public void LoadMyInfo(int s)
         {
             var q = (from p in this.db.Members.AsEnumerable()
-                     where p.MemberID == int.Parse(CInfo.currentID)
+                     where p.MemberID == s
                      select p).FirstOrDefault();
 
-            CMyInfo.Name = q    .Name;
-
+            CMyInfo.Name = q.Name;
+            CMyInfo.IdentityID = q.Resumes.FirstOrDefault().IdentityID;
+            CMyInfo.Email = q.Email;
+            CMyInfo.MyContend = q.Mycomment;
+            CMyInfo.PhoneNumber = q.Phone;
+            CMyInfo.WorkExp = q.Resumes.FirstOrDefault().WorkExp;
+            CMyInfo.EDID = q.Resumes.FirstOrDefault().EDID;
         }
 
         //List<CMyResume> _list = null;
